@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 1574122105582232091}
   - component: {fileID: 5041990471835415813}
   - component: {fileID: 3924528374809775815}
-  - component: {fileID: 4864316584227740499}
+  - component: {fileID: 7686842984616303581}
+  - component: {fileID: -6896393109931997273}
+  - component: {fileID: -1299524919051501977}
   m_Layer: 0
   m_Name: Maps
   m_TagString: Untagged
@@ -126,7 +128,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4864316584227740499
+--- !u!114 &7686842984616303581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +137,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 971423889400689476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3581c49dbf636a24f900ec6bd8ceb137, type: 3}
+  m_Script: {fileID: 11500000, guid: cbb8b1913a8304d45bdb0d792bac958a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.8584906, g: 0.23891956, b: 0.23891956, a: 0.23921569}
+  HP: 50
+  speed: 20
+  status: 0
+  col: []
+--- !u!114 &-6896393109931997273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971423889400689476}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591ff95b1893d4e82a26f72d2931a4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &-1299524919051501977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971423889400689476}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b10b67326d047b3bdabbecd5ea22ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}

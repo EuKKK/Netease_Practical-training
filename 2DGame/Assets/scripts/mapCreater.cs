@@ -36,8 +36,8 @@ public class mapCreater : MonoBehaviour
                     maps[i * j + j] = Instantiate(map, new Vector3(top_left_coordinate.x+ j * width+0.5f , top_left_coordinate.y - i * width * rates / 2, 0), Quaternion.identity);
             }
         }
-
-
+        maps[6*6].transform.gameObject.GetComponent<red_command>().enabled=true;
+        maps[3*3+3].transform.gameObject.GetComponent<green_command>().enabled=true;
         //maps[0] = Instantiate(map);
         //maps[1] = Instantiate(map, new Vector3( -0.5F, 0, 0), Quaternion.identity);
         //maps[2] = Instantiate(map, new Vector3(0.5F, 0, 0), Quaternion.identity);
