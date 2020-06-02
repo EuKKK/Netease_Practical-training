@@ -7,6 +7,7 @@ public class mapCreater : MonoBehaviour
 {
     public GameObject map;
     public GameObject[] maps;
+    public int red_r, red_c, yellow_r, yellow_c, green_r, green_c;
     public int rows;
     public int cols;
     public float width;                     //格子宽度
@@ -31,14 +32,14 @@ public class mapCreater : MonoBehaviour
             for(int j = 0; j < cols; j++)
             {
                 if(i%2==0)
-                    maps[i*j+j]=Instantiate(map, new Vector3(top_left_coordinate.x+j*width, top_left_coordinate.y - i * width * rates / 2, 0), Quaternion.identity);
+                    maps[i* cols + j]=Instantiate(map, new Vector3(top_left_coordinate.x+j*width, top_left_coordinate.y - i * width * rates / 2, 0), Quaternion.identity);
                 else
-                    maps[i * j + j] = Instantiate(map, new Vector3(top_left_coordinate.x+ j * width+0.5f , top_left_coordinate.y - i * width * rates / 2, 0), Quaternion.identity);
+                    maps[i * cols + j] = Instantiate(map, new Vector3(top_left_coordinate.x+ j * width+0.5f , top_left_coordinate.y - i * width * rates / 2, 0), Quaternion.identity);
             }
         }
-        maps[6*6].transform.gameObject.GetComponent<red_command>().enabled=true;
-        maps[3*3+3].transform.gameObject.GetComponent<green_command>().enabled=true;
-        maps[20].transform.gameObject.GetComponent<yellow_command>().enabled = true;
+        maps[red_r*cols+red_c].transform.gameObject.GetComponent<red_command>().enabled=true;
+        maps[green_r*cols+green_c].transform.gameObject.GetComponent<green_command>().enabled=true;
+        maps[yellow_r*cols+yellow_c].transform.gameObject.GetComponent<yellow_command>().enabled = true;
         //maps[0] = Instantiate(map);
         //maps[1] = Instantiate(map, new Vector3( -0.5F, 0, 0), Quaternion.identity);
         //maps[2] = Instantiate(map, new Vector3(0.5F, 0, 0), Quaternion.identity);
