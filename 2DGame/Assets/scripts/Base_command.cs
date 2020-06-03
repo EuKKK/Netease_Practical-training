@@ -15,22 +15,28 @@ using UnityEngine;
  * ***********************************************************/
 public class Base_command : MonoBehaviour
 {
-    public float HP=50f;
+    public float HP = 50f;
 
-    private const int WHITE=0;
-    private const int GREEN=1;
-    private const int RED=2;
-    private const int BLUE=3;
-    private const int YELLOW=4;
+    private const int WHITE = 0;
+    private const int GREEN = 1;
+    private const int RED = 2;
+    private const int BLUE = 3;
+    private const int YELLOW = 4;
 
-    private BatteryData batData;
-    
+    public BatteryData batData;
+
+    public float greenThreshold = 100f;
+    public float redThreshold = 0f;
+
+    public float HPupperThreshold = 150f;
+    public float HPlowerThreshold = -50f;
+
     public float speed = 10f;
-    public int status;
+    public int status = 0;
     // Start is called before the first frame update
     void Start()
     {
-        status=0;
+        //status=0;
     }
 
     // Update is called once per frame
@@ -59,7 +65,7 @@ public class Base_command : MonoBehaviour
                 this.gameObject.GetComponent<green_command>().enabled=true;
             }
         }*/
-
+        /*
         //主动攻击代替被动接受  仅存在于红、蓝
         float attackdist;
         if(this.status == 2 || this.status == 3)
@@ -104,7 +110,7 @@ public class Base_command : MonoBehaviour
                     cc.gameObject.GetComponent<red_command>().enabled = true;
                     cc.gameObject.GetComponent<green_command>().enabled = false;
                 }
-                else if (cchp >= 100 && (ccstatus != 1 && ccstatus != 3))
+                else if (cchp >= 100 && (ccstatus != 1&& ccstatus != 3))
                 {
                     cchp = cc.gameObject.GetComponent<Base_command>().HP = 100;
                     cc.gameObject.GetComponent<red_command>().enabled = false;
@@ -113,6 +119,69 @@ public class Base_command : MonoBehaviour
                 }
             }
         }
-        
+        */
+        col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
+        foreach (Collider2D cc in col)
+        {
+            Base_command b = cc.gameObject.GetComponent<Base_command>();
+            float attrackValue = b.getAttackValue(this.gameObject);
+
+            HP += Time.deltaTime * attrackValue;
+        }
+        HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+        if (HP >= greenThreshold)
+        {
+            if (status == WHITE || status == RED || status == YELLOW)
+            {
+                status = GREEN;
+                this.gameObject.GetComponent<red_command>().enabled = false;
+                this.gameObject.GetComponent<green_command>().enabled = true;
+                GreenNumber.numGreen += 1;
+                //转换成绿色的具体操作
+                this.gameObject.GetComponent<green_command>().turnGreenEffects();
+            }
+        }
+        if (HP <= redThreshold)
+        {
+            if (status != RED)
+            {
+                if (status == GREEN)
+                    GreenNumber.numGreen -= 1;
+                if (status == BLUE)
+                {
+                    //摧毁炮塔
+                    GameObject.Destroy(this.gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
+                    GreenNumber.numGreen -= 1;
+                }
+                status = RED;
+                this.gameObject.GetComponent<red_command>().enabled = true;
+                this.gameObject.GetComponent<green_command>().enabled = false;
+                this.gameObject.GetComponent<blue_command>().enabled = false;
+                //转换成红色的具体操作
+                this.gameObject.GetComponent<red_command>().turnRedEffects();
+            }
+        }
+        //设置上下限
+        if (HP > HPupperThreshold)
+            HP = HPupperThreshold;
+        if (HP < HPlowerThreshold)
+            HP = HPlowerThreshold;
+    }
+
+    public float getAttackValue(GameObject g)
+    {
+        if (this.status == 2)
+        {
+            //Debug.LogWarning("here");
+            red_command r = this.gameObject.GetComponent<red_command>();
+            return r.getAttackValue(g);
+        }
+        if (this.status == 3)
+        {
+            blue_command b = this.gameObject.GetComponent<blue_command>();
+            return b.getAttackValue(g);
+        }
+
+        return 0f;
     }
 }

@@ -977,6 +977,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 971423889400689476, guid: d9544bc08b7c87340a334921717fcfb0, type: 3}
   maps: []
+  red_r: 0
+  red_c: 0
+  yellow_r: 5
+  yellow_c: 6
+  green_r: 4
+  green_c: 2
   number1: {fileID: 0}
   number2: {fileID: 0}
   number3: {fileID: 0}
@@ -1189,8 +1195,8 @@ MonoBehaviour:
       type: 3}
     cost: 500
     type: 0
-    cureDistance: 2
-    cureVal: 2
+    cureDistance: 1.5
+    cureVal: 15
   PowerStationData:
     batteryPrefab: {fileID: 3006049400404059207, guid: f4fdc00ddcf64bd4bb3a9789951fa51b,
       type: 3}
@@ -1205,8 +1211,16 @@ MonoBehaviour:
     type: 2
     cureDistance: 1.5
     cureVal: 1.5
+  BatterySelectedData:
+    batteryPrefab: {fileID: 0}
+    cost: 0
+    type: 0
+    cureDistance: 0
+    cureVal: 0
+  money: 2000
   moneyText: {fileID: 801737236}
   moneyAnimator: {fileID: 801737239}
+  n: 0
 --- !u!4 &1222844127
 Transform:
   m_ObjectHideFlags: 0

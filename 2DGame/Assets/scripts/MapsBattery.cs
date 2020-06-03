@@ -7,7 +7,7 @@ public class MapsBattery : MonoBehaviour
 {
     [HideInInspector]
     public GameObject BatteryOnMaps; //Maps上的炮台
-    private BatteryData batteryData; //炮台数据
+    public BatteryData batteryData; //炮台数据
 
     public GameObject BuildEffect;
 
