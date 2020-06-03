@@ -977,6 +977,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 971423889400689476, guid: d9544bc08b7c87340a334921717fcfb0, type: 3}
   maps: []
+  number1: {fileID: 0}
+  number2: {fileID: 0}
+  number3: {fileID: 0}
+  textGo: {fileID: 0}
+  num1: {fileID: 0}
+  num2: {fileID: 0}
+  num3: {fileID: 0}
+  tgo: {fileID: 0}
+  countDownPos: {x: 0, y: 0, z: -1}
   rows: 8
   cols: 12
   width: 1

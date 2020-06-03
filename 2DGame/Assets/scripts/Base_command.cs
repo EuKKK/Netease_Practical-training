@@ -104,7 +104,7 @@ public class Base_command : MonoBehaviour
                     cc.gameObject.GetComponent<red_command>().enabled = true;
                     cc.gameObject.GetComponent<green_command>().enabled = false;
                 }
-                else if (cchp >= 100 && (ccstatus != 1&& ccstatus != 3))
+                else if (cchp >= 100 && (ccstatus != 1 && ccstatus != 3))
                 {
                     cchp = cc.gameObject.GetComponent<Base_command>().HP = 100;
                     cc.gameObject.GetComponent<red_command>().enabled = false;

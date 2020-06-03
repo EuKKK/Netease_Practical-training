@@ -58,6 +58,7 @@
      <Compile Include="Assets\scripts\Base_command.cs" />
      <Compile Include="Assets\scripts\BatteryData.cs" />
      <Compile Include="Assets\scripts\BatteryManager.cs" />
+     <Compile Include="Assets\scripts\GameMenu.cs" />
      <Compile Include="Assets\scripts\GreenNumber.cs" />
      <Compile Include="Assets\scripts\MapsBattery.cs" />
      <Compile Include="Assets\scripts\green_command.cs" />
