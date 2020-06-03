@@ -144,7 +144,7 @@ public class Base_command : MonoBehaviour
                 }
                 //判断变色之前是否为黄色，是则赢了
                 if(temp_status == YELLOW)
-                        SceneManager.LoadScene(3);
+                        SceneManager.LoadScene(2);
             }
             else if (HP <= redThreshold)
             {
@@ -167,7 +167,7 @@ public class Base_command : MonoBehaviour
                 }
                 ///新增---by lee 判断先前颜色是否为黄色，是输了
                 if(temp_status == YELLOW)
-                    SceneManager.LoadScene(2);
+                    SceneManager.LoadScene(3);
             }
             //设置上下限
             if (HP > HPupperThreshold)
