@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 /**********************************************************
  * 
  * Maps 初始值为50（白块）
@@ -22,7 +22,7 @@ public class Base_command : MonoBehaviour
     private const int RED = 2;
     private const int BLUE = 3;
     private const int YELLOW = 4;
-
+ 
     public BatteryData batData;
 
     public float greenThreshold = 100f;
@@ -120,53 +120,62 @@ public class Base_command : MonoBehaviour
             }
         }
         */
-        col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
-        foreach (Collider2D cc in col)
-        {
-            Base_command b = cc.gameObject.GetComponent<Base_command>();
-            float attrackValue = b.getAttackValue(this.gameObject);
+            col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
+            foreach (Collider2D cc in col)
+            {
+                Base_command b = cc.gameObject.GetComponent<Base_command>();
+                float attrackValue = b.getAttackValue(this.gameObject);
 
-            HP += Time.deltaTime * attrackValue;
-        }
-        HP += Time.deltaTime * this.getAttackValue(this.gameObject);
-        if (HP >= greenThreshold)
-        {
-            if (status == WHITE || status == RED || status == YELLOW)
-            {
-                status = GREEN;
-                this.gameObject.GetComponent<red_command>().enabled = false;
-                this.gameObject.GetComponent<green_command>().enabled = true;
-                GreenNumber.numGreen += 1;
-                //转换成绿色的具体操作
-                this.gameObject.GetComponent<green_command>().turnGreenEffects();
+                HP += Time.deltaTime * attrackValue;
             }
-        }
-        if (HP <= redThreshold)
-        {
-            if (status != RED)
-            {
-                if (status == GREEN)
-                    GreenNumber.numGreen -= 1;
-                if (status == BLUE)
+            HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+            //新增---by lee 保存临时状态
+            int temp_status = status;
+            if (HP >= greenThreshold)
+            {   
+                if (status == WHITE || status == RED || status == YELLOW)
                 {
-                    //摧毁炮塔
-                    GameObject.Destroy(this.gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
-                    GreenNumber.numGreen -= 1;
+                    status = GREEN;
+                    this.gameObject.GetComponent<red_command>().enabled = false;
+                    this.gameObject.GetComponent<green_command>().enabled = true;
+                    GreenNumber.numGreen += 1;
+                    //转换成绿色的具体操作
+                    this.gameObject.GetComponent<green_command>().turnGreenEffects();
                 }
-                status = RED;
-                this.gameObject.GetComponent<red_command>().enabled = true;
-                this.gameObject.GetComponent<green_command>().enabled = false;
-                this.gameObject.GetComponent<blue_command>().enabled = false;
-                //转换成红色的具体操作
-                this.gameObject.GetComponent<red_command>().turnRedEffects();
+                //判断变色之前是否为黄色，是则赢了
+                if(temp_status == YELLOW)
+                        SceneManager.LoadScene(3);
             }
-        }
-        //设置上下限
-        if (HP > HPupperThreshold)
-            HP = HPupperThreshold;
-        if (HP < HPlowerThreshold)
-            HP = HPlowerThreshold;
-    }
+            else if (HP <= redThreshold)
+            {
+                if (status != RED)
+                {
+                    if (status == GREEN)
+                        GreenNumber.numGreen -= 1;
+                    if (status == BLUE)
+                    {
+                        //摧毁炮塔
+                        GameObject.Destroy(this.gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
+                        GreenNumber.numGreen -= 1;
+                    }
+                    status = RED;
+                    this.gameObject.GetComponent<red_command>().enabled = true;
+                    this.gameObject.GetComponent<green_command>().enabled = false;
+                    this.gameObject.GetComponent<blue_command>().enabled = false;
+                    //转换成红色的具体操作
+                    this.gameObject.GetComponent<red_command>().turnRedEffects();
+                }
+                ///新增---by lee 判断先前颜色是否为黄色，是输了
+                if(temp_status == YELLOW)
+                    SceneManager.LoadScene(2);
+            }
+            //设置上下限
+            if (HP > HPupperThreshold)
+                HP = HPupperThreshold;
+            if (HP < HPlowerThreshold)
+                HP = HPlowerThreshold;
+
+}
 
     public float getAttackValue(GameObject g)
     {
