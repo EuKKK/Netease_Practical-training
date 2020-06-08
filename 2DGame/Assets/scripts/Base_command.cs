@@ -17,6 +17,9 @@ public class Base_command : MonoBehaviour
 {
     public float HP = 50f;
 
+    //地形数据
+    public TerrainData terrainData;
+
     private const int WHITE = 0;
     private const int GREEN = 1;
     private const int RED = 2;
@@ -120,12 +123,17 @@ public class Base_command : MonoBehaviour
             }
         }
         */
+            //寻找能够攻击到本格子的目标，将他们的影响加到自身上
             col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
             foreach (Collider2D cc in col)
             {
                 Base_command b = cc.gameObject.GetComponent<Base_command>();
                 float attrackValue = b.getAttackValue(this.gameObject);
-
+                //对于每一次攻击，都需要先减去护甲计算
+                if (attrackValue > 0)
+                    attrackValue = (attrackValue - terrainData.armor)>0? (attrackValue - terrainData.armor):0;
+                else
+                    attrackValue = (attrackValue + terrainData.armor) < 0 ? (attrackValue + terrainData.armor) : 0;
                 HP += Time.deltaTime * attrackValue;
             }
             HP += Time.deltaTime * this.getAttackValue(this.gameObject);
@@ -170,9 +178,10 @@ public class Base_command : MonoBehaviour
                     SceneManager.LoadScene(3);
             }
             //设置上下限
-            if (HP > HPupperThreshold)
+            //需要考虑地形额外的HP
+            if (HP > HPupperThreshold+terrainData.extraHP)
                 HP = HPupperThreshold;
-            if (HP < HPlowerThreshold)
+            if (HP < HPlowerThreshold-terrainData.extraHP)
                 HP = HPlowerThreshold;
 
 }
@@ -192,5 +201,10 @@ public class Base_command : MonoBehaviour
         }
 
         return 0f;
+    }
+
+    public void ChangeTerrain()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = terrainData.sprite;
     }
 }

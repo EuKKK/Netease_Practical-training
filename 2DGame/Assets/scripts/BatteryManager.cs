@@ -94,9 +94,11 @@ public class BatteryManager : MonoBehaviour
                     {
                         //map空即能进行建造
                         //判断资源知否足以创建炮台
-                        if (money >= BatterySelectedData.cost)
+                        //不同地形额外cost不一样需要加上
+                        int cost = BatterySelectedData.cost + col[minIndex].gameObject.GetComponent<Base_command>().terrainData.extraCost;
+                        if (money >= cost)
                         {
-                            ChangeMoney(-BatterySelectedData.cost);
+                            ChangeMoney(-cost);
                             battery.BuildBattery(BatterySelectedData.batteryPrefab, BatterySelectedData);
                             col[minIndex].gameObject.GetComponent<Base_command>().status = 3;
                             col[minIndex].gameObject.GetComponent<blue_command>().enabled = true;

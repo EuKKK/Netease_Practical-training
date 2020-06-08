@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class mapCreater : MonoBehaviour
 {
+    //4种地形数据
+    public TerrainData commonTerrain;
+    public TerrainData noMansLandTerrain;
+    public TerrainData plainTerrain;
+    public TerrainData valleyTerrain;
+    //地形数组，存储对应格子的地形，暂时没有更加好的加载方法
+    public int[] terrainArray;
+
     public GameObject map;
     public GameObject[] maps;
     public int red_r, red_c, yellow_r, yellow_c, green_r, green_c;
@@ -50,6 +58,23 @@ public class mapCreater : MonoBehaviour
                     maps[rows * j + i] = Instantiate(map, new Vector3(top_left_coordinate.x + j * width * 3 / 4, top_left_coordinate.y - i * width * rates / 2, 0), Quaternion.identity);
                 else
                     maps[rows * j + i] = Instantiate(map, new Vector3(top_left_coordinate.x + j * width * 3 / 4, top_left_coordinate.y - i * width * rates / 2 + 0.5f * rates / 2, 0), Quaternion.identity);
+                //根据terrainArray存储的信息，为格子加载地形
+                switch (terrainArray[rows * j + i])
+                {
+                    case 0:
+                        maps[rows * j + i].GetComponent<Base_command>().terrainData = commonTerrain;
+                        break;
+                    case 1:
+                        maps[rows * j + i].GetComponent<Base_command>().terrainData = noMansLandTerrain;
+                        break;
+                    case 2:
+                        maps[rows * j + i].GetComponent<Base_command>().terrainData = plainTerrain;
+                        break;
+                    default:
+                        maps[rows * j + i].GetComponent<Base_command>().terrainData = valleyTerrain;
+                        break;
+                }
+                maps[rows * j + i].GetComponent<Base_command>().ChangeTerrain();
             }
         }
 
@@ -81,11 +106,6 @@ public class mapCreater : MonoBehaviour
         Invoke("MapScriptSelected", 8f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     /*IEnumerator callYieldFunc()
     {
