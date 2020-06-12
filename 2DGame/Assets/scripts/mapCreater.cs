@@ -87,7 +87,8 @@ public class mapCreater : MonoBehaviour
         maps[green_r*cols+green_c].transform.gameObject.GetComponent<green_command>().enabled=true;
         maps[green_r * cols + green_c].transform.gameObject.GetComponent<Base_command>().status = 1;
         maps[green_r * cols + green_c].transform.gameObject.GetComponent<green_command>().turnGreenEffects();
-
+        //根据地形计算第一块绿块的资源影响速率
+        GreenNumber.numGreen += maps[green_r * cols + green_c].transform.gameObject.GetComponent<Base_command>().terrainData.incRate;
 
         maps[yellow_r*cols+yellow_c].transform.gameObject.GetComponent<yellow_command>().enabled = true;
         maps[yellow_r * cols + yellow_c].transform.gameObject.GetComponent<Base_command>().status = 4;
@@ -97,12 +98,8 @@ public class mapCreater : MonoBehaviour
         num3 = GameObject.Instantiate(number3, countDownPos, Quaternion.identity);
         GameObject.Destroy(num3, 1);
         Invoke("SetNum2", 1f);
-        
         Invoke("SetNum1", 3f);
-        
         Invoke("SetGo", 5f);
-        
-
         Invoke("MapScriptSelected", 8f);
     }
 

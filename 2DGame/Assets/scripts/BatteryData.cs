@@ -10,6 +10,8 @@ public class BatteryData
     public BatteryType type;
     public float cureDistance;
     public float cureVal;
+    public float totalHP;
+    public float HP; //当前血量
 }
 
 public enum BatteryType

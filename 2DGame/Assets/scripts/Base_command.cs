@@ -19,6 +19,7 @@ public class Base_command : MonoBehaviour
 
     //地形数据
     public TerrainData terrainData;
+    public GameObject DestoryEffect; //摧毁特效
 
     private const int WHITE = 0;
     private const int GREEN = 1;
@@ -123,49 +124,96 @@ public class Base_command : MonoBehaviour
             }
         }
         */
-            //寻找能够攻击到本格子的目标，将他们的影响加到自身上
-            col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
-            foreach (Collider2D cc in col)
+        //寻找能够攻击到本格子的目标，将他们的影响加到自身上
+        col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
+        foreach (Collider2D cc in col)
+        {
+            Base_command b = cc.gameObject.GetComponent<Base_command>();
+            float attrackValue = b.getAttackValue(this.gameObject);
+            //对于每一次攻击，都需要先减去护甲计算
+            if (attrackValue > 0)
+                attrackValue = (attrackValue - terrainData.armor)>0? (attrackValue - terrainData.armor):0;
+            else
+                attrackValue = (attrackValue + terrainData.armor) < 0 ? (attrackValue + terrainData.armor) : 0;
+            if (status == BLUE)
             {
-                Base_command b = cc.gameObject.GetComponent<Base_command>();
-                float attrackValue = b.getAttackValue(this.gameObject);
-                //对于每一次攻击，都需要先减去护甲计算
-                if (attrackValue > 0)
-                    attrackValue = (attrackValue - terrainData.armor)>0? (attrackValue - terrainData.armor):0;
-                else
-                    attrackValue = (attrackValue + terrainData.armor) < 0 ? (attrackValue + terrainData.armor) : 0;
+                //若为蓝色，应对炮台施加影响，减去炮台HP
+                this.gameObject.GetComponent<MapsBattery>().batteryData.HP += Time.deltaTime * attrackValue;
+                this.gameObject.GetComponent<MapsBattery>().BatterySlider.value = this.gameObject.GetComponent<MapsBattery>().batteryData.HP / this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
+            }
+            else
+            {
                 HP += Time.deltaTime * attrackValue;
             }
+        }
+
+        //自己对自己施加影响
+        if (status == BLUE)
+        {
+            //若为蓝色，应对炮台施加影响，减去炮台HP
+            this.gameObject.GetComponent<MapsBattery>().batteryData.HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+            this.gameObject.GetComponent<MapsBattery>().BatterySlider.value = this.gameObject.GetComponent<MapsBattery>().batteryData.HP / this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
+        }
+        else
+        {
             HP += Time.deltaTime * this.getAttackValue(this.gameObject);
-            //新增---by lee 保存临时状态
+        }
+        //HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+        //新增---by lee 保存临时状态
+        if(status == BLUE)
+        {
+            //炮塔HP未到达0则无影响
+            //上下界处理
+            if(this.gameObject.GetComponent<MapsBattery>().batteryData.HP > this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP)
+            {
+                this.gameObject.GetComponent<MapsBattery>().batteryData.HP = this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
+            }
+            else if(this.gameObject.GetComponent<MapsBattery>().batteryData.HP <= redThreshold)
+            {
+                //摧毁炮台，改变状态
+                Vector3 position = this.gameObject.GetComponent<MapsBattery>().position;
+                GameObject.Destroy(this.gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
+                GameObject effect = GameObject.Instantiate(DestoryEffect, position, Quaternion.identity);
+                GameObject.Destroy(effect, 1);
+                status = GREEN;
+                this.gameObject.GetComponent<red_command>().enabled = false;
+                this.gameObject.GetComponent<green_command>().enabled = true;
+                this.gameObject.GetComponent<blue_command>().enabled = false;
+                //GreenNumber.numGreen -= 1;
+            }
+        }
+        else
+        {
             int temp_status = status;
             if (HP >= greenThreshold)
-            {   
+            {
                 if (status == WHITE || status == RED || status == YELLOW)
                 {
                     status = GREEN;
                     this.gameObject.GetComponent<red_command>().enabled = false;
                     this.gameObject.GetComponent<green_command>().enabled = true;
-                    GreenNumber.numGreen += 1;
+                    //GreenNumber.numGreen += 1;
+                    GreenNumber.numGreen += terrainData.incRate;
                     //转换成绿色的具体操作
                     this.gameObject.GetComponent<green_command>().turnGreenEffects();
                 }
                 //判断变色之前是否为黄色，是则赢了
-                if(temp_status == YELLOW)
-                        SceneManager.LoadScene(2);
+                if (temp_status == YELLOW)
+                    SceneManager.LoadScene(2);
             }
             else if (HP <= redThreshold)
             {
                 if (status != RED)
                 {
                     if (status == GREEN)
-                        GreenNumber.numGreen -= 1;
-                    if (status == BLUE)
+                        //GreenNumber.numGreen -= 1;
+                        GreenNumber.numGreen -= terrainData.incRate;
+                    /*if (status == BLUE)
                     {
                         //摧毁炮塔
                         GameObject.Destroy(this.gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
                         GreenNumber.numGreen -= 1;
-                    }
+                    }*/
                     status = RED;
                     this.gameObject.GetComponent<red_command>().enabled = true;
                     this.gameObject.GetComponent<green_command>().enabled = false;
@@ -174,15 +222,16 @@ public class Base_command : MonoBehaviour
                     this.gameObject.GetComponent<red_command>().turnRedEffects();
                 }
                 ///新增---by lee 判断先前颜色是否为黄色，是输了
-                if(temp_status == YELLOW)
+                if (temp_status == YELLOW)
                     SceneManager.LoadScene(3);
             }
             //设置上下限
             //需要考虑地形额外的HP
-            if (HP > HPupperThreshold+terrainData.extraHP)
+            if (HP > HPupperThreshold + terrainData.extraHP)
                 HP = HPupperThreshold;
-            if (HP < HPlowerThreshold-terrainData.extraHP)
+            if (HP < HPlowerThreshold - terrainData.extraHP)
                 HP = HPlowerThreshold;
+        }
 
 }
 

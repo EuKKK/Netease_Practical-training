@@ -144,12 +144,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 50
+  terrainData:
+    teerainType: 0
+    sprite: {fileID: 0}
+    armor: 0
+    extraHP: 0
+    extraCost: 0
+    incRate: 0
+  DestoryEffect: {fileID: 1153866504218906253, guid: 837a8c2fd69c08e42a345d711bc760d3,
+    type: 3}
   batData:
     batteryPrefab: {fileID: 0}
     cost: 0
     type: 0
     cureDistance: 0
     cureVal: 0
+    totalHP: 0
+    HP: 0
   greenThreshold: 100
   redThreshold: 0
   HPupperThreshold: 150
@@ -198,6 +209,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BatteryOnMaps: {fileID: 0}
+  batteryData:
+    batteryPrefab: {fileID: 0}
+    cost: 0
+    type: 0
+    cureDistance: 0
+    cureVal: 0
+    totalHP: 0
+    HP: 0
+  BatterySlider: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
   BuildEffect: {fileID: 1153866504218906253, guid: 837a8c2fd69c08e42a345d711bc760d3,
     type: 3}
 --- !u!114 &5762659719329289072

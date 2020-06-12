@@ -4,6 +4,6 @@ using UnityEngine;
 
 public static class GreenNumber
 {
-    public static int numGreen =0;
+    public static float numGreen = 0;
     //或者屏幕显示双方血值剩余？
 }

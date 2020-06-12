@@ -981,24 +981,28 @@ MonoBehaviour:
     armor: 0
     extraHP: 0
     extraCost: 0
+    incRate: 0.1
   noMansLandTerrain:
     teerainType: 1
     sprite: {fileID: 21300000, guid: ecf5395649d1336489dc3eb35467e5fa, type: 3}
     armor: 0
     extraHP: 0
     extraCost: 200
+    incRate: 0.2
   plainTerrain:
     teerainType: 2
     sprite: {fileID: 21300000, guid: 8c3ad1b3a599f2c45a0c29f2df32d05d, type: 3}
     armor: 0
     extraHP: 0
     extraCost: 0
+    incRate: 0.3
   valleyTerrain:
     teerainType: 3
     sprite: {fileID: 21300000, guid: cc50556a0b3e4ae4b9d908412a5680f0, type: 3}
     armor: 0
     extraHP: 0
     extraCost: 0
+    incRate: 0.4
   terrainArray: 010000000100000001000000010000000200000003000000000000000300000003000000030000000200000002000000020000000300000000000000000000000300000002000000030000000100000001000000010000000100000002000000030000000200000003000000020000000200000002000000020000000200000002000000020000000100000001000000010000000200000001000000020000000100000001000000000000000000000000000000000000000200000003000000010000000200000001000000020000000100000002000000010000000200000000000000000000000000000000000000000000000000000002000000020000000200000002000000030000000300000003000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   map: {fileID: 971423889400689476, guid: d9544bc08b7c87340a334921717fcfb0, type: 3}
   maps: []
@@ -1216,32 +1220,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HospitalData:
-    batteryPrefab: {fileID: 3701969469515476348, guid: dae563361187021478bc3b518de22a26,
+    batteryPrefab: {fileID: 7173556395771248402, guid: 5f3909abec402604685f6e2ec1270b7c,
       type: 3}
     cost: 500
     type: 0
     cureDistance: 1.5
     cureVal: 15
+    totalHP: 200
+    HP: 200
   PowerStationData:
-    batteryPrefab: {fileID: 3006049400404059207, guid: f4fdc00ddcf64bd4bb3a9789951fa51b,
+    batteryPrefab: {fileID: 5550067328677839914, guid: d0ab20141cc28bc45a4eb3695bd7546d,
       type: 3}
     cost: 1000
     type: 1
     cureDistance: 2.5
     cureVal: 2.5
+    totalHP: 300
+    HP: 300
   MaskFactoryData:
-    batteryPrefab: {fileID: 5034821192075235114, guid: 9f97e335afab8fc49a0f1ac5b7f98f54,
+    batteryPrefab: {fileID: 1602387919625104189, guid: e2a8aa18b2d525d45bdba23fb6e805ee,
       type: 3}
     cost: 250
     type: 2
     cureDistance: 1.5
     cureVal: 1.5
+    totalHP: 150
+    HP: 150
   BatterySelectedData:
     batteryPrefab: {fileID: 0}
     cost: 0
     type: 0
     cureDistance: 0
     cureVal: 0
+    totalHP: 0
+    HP: 0
   money: 2000
   moneyText: {fileID: 801737236}
   moneyAnimator: {fileID: 801737239}
