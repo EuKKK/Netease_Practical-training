@@ -1135,7 +1135,7 @@ MonoBehaviour:
   maps: []
   red_r: 0
   red_c: 0
-  yellow_r: 5
+  yellow_r: 6
   yellow_c: 6
   green_r: 4
   green_c: 2
@@ -1351,7 +1351,7 @@ MonoBehaviour:
       type: 3}
     cost: 500
     type: 0
-    cureDistance: 1.5
+    cureDistance: 3
     cureVal: 15
     totalHP: 200
     HP: 200
@@ -1360,7 +1360,7 @@ MonoBehaviour:
       type: 3}
     cost: 1000
     type: 1
-    cureDistance: 2.5
+    cureDistance: 1
     cureVal: 2.5
     totalHP: 300
     HP: 300
@@ -1369,7 +1369,7 @@ MonoBehaviour:
       type: 3}
     cost: 250
     type: 2
-    cureDistance: 1.5
+    cureDistance: 1
     cureVal: 1.5
     totalHP: 150
     HP: 150

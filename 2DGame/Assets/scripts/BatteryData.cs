@@ -8,7 +8,7 @@ public class BatteryData
     public GameObject batteryPrefab;
     public int cost;
     public BatteryType type;
-    public float cureDistance;
+    public int cureDistance;
     public float cureVal;
     public float totalHP;
     public float HP; //当前血量

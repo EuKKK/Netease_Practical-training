@@ -77,40 +77,42 @@ public class BatteryManager : MonoBehaviour
                     mousePos.z = 10;
                     Vector3 screenPos = Camera.main.ScreenToWorldPoint(mousePos);
                     //RaycastHit2D hit = Physics2D.Raycast(screenPos, Vector2.zero, 1 << (LayerMask.NameToLayer("Maps")));
-                    Collider2D[] col = Physics2D.OverlapPointAll(screenPos);
+                    //Collider2D[] col = Physics2D.OverlapPointAll(screenPos);
+                    GameObject mapsCreater = GameObject.Find("mapCreater");
+                    GameObject target = mapsCreater.GetComponent<mapCreater>().getPointingMap(screenPos.x, screenPos.y);
 
-                    if (col.Length > 0)
+                    if (target!=null)
                     {
-                        int index = 0;
-                        int minIndex = 0;
-                        float distance = 10f;
-                        foreach (Collider2D cc in col)
-                        {
-                            float d = getDistance(screenPos, cc.gameObject.GetComponent<Transform>().position);
-                            if (d < distance)
-                            {
-                                minIndex = index;
-                                distance = d;
-                            }
+                        //int index = 0;
+                        //int minIndex = 0;
+                        //float distance = 10f;
+                        //foreach (Collider2D cc in col)
+                        //{
+                        //    float d = getDistance(screenPos, cc.gameObject.GetComponent<Transform>().position);
+                        //    if (d < distance)
+                        //    {
+                        //        minIndex = index;
+                        //        distance = d;
+                        //    }
 
-                            index++;
-                        }
+                        //    index++;
+                        //}
 
-                        MapsBattery battery = col[minIndex].gameObject.GetComponent<MapsBattery>();
-                        int status = col[minIndex].gameObject.GetComponent<Base_command>().status;
-                        if (distance < 1f && battery.BatteryOnMaps == null && status == 1)
+                        MapsBattery battery = target.GetComponent<MapsBattery>();
+                        int status = target.GetComponent<Base_command>().status;
+                        if (battery.BatteryOnMaps == null && status == 1)
                         {
                             //map空即能进行建造
                             //判断资源知否足以创建炮台
                             //不同地形额外cost不一样需要加上
-                            int cost = BatterySelectedData.cost + col[minIndex].gameObject.GetComponent<Base_command>().terrainData.extraCost;
+                            int cost = BatterySelectedData.cost + target.GetComponent<Base_command>().terrainData.extraCost;
                             if (money >= cost)
                             {
                                 ChangeMoney(-cost);
                                 battery.BuildBattery(BatterySelectedData.batteryPrefab, BatterySelectedData);
-                                col[minIndex].gameObject.GetComponent<Base_command>().status = 3;
-                                col[minIndex].gameObject.GetComponent<blue_command>().enabled = true;
-                                col[minIndex].gameObject.GetComponent<blue_command>().turnBlueEffects();
+                                target.GetComponent<Base_command>().status = 3;
+                                target.GetComponent<blue_command>().enabled = true;
+                                target.GetComponent<blue_command>().turnBlueEffects();
                             }
                             else
                             {

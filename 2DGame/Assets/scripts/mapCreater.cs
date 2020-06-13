@@ -75,23 +75,24 @@ public class mapCreater : MonoBehaviour
                         break;
                 }
                 maps[rows * j + i].GetComponent<Base_command>().ChangeTerrain();
+                maps[rows * j + i].GetComponent<Base_command>().number = rows * j + i;
             }
         }
 
 
-        maps[red_r*cols+red_c].transform.gameObject.GetComponent<red_command>().enabled=true;
-        maps[red_r * cols + red_c].transform.gameObject.GetComponent<Base_command>().status = 2;
-        maps[red_r * cols + red_c].transform.gameObject.GetComponent<red_command>().turnRedEffects();
-        maps[red_r * cols + red_c].transform.gameObject.GetComponent<Base_command>().HP = -50;
+        maps[red_r+red_c*rows].transform.gameObject.GetComponent<red_command>().enabled=true;
+        maps[red_r + red_c * rows].transform.gameObject.GetComponent<Base_command>().status = 2;
+        maps[red_r + red_c * rows].transform.gameObject.GetComponent<red_command>().turnRedEffects();
+        maps[red_r + red_c * rows].transform.gameObject.GetComponent<Base_command>().HP = -50;
 
-        maps[green_r*cols+green_c].transform.gameObject.GetComponent<green_command>().enabled=true;
-        maps[green_r * cols + green_c].transform.gameObject.GetComponent<Base_command>().status = 1;
-        maps[green_r * cols + green_c].transform.gameObject.GetComponent<green_command>().turnGreenEffects();
+        maps[green_r+green_c*rows].transform.gameObject.GetComponent<green_command>().enabled=true;
+        maps[green_r + green_c * rows].transform.gameObject.GetComponent<Base_command>().status = 1;
+        maps[green_r + green_c * rows].transform.gameObject.GetComponent<green_command>().turnGreenEffects();
         //根据地形计算第一块绿块的资源影响速率
         GreenNumber.numGreen += maps[green_r * cols + green_c].transform.gameObject.GetComponent<Base_command>().terrainData.incRate;
 
-        maps[yellow_r*cols+yellow_c].transform.gameObject.GetComponent<yellow_command>().enabled = true;
-        maps[yellow_r * cols + yellow_c].transform.gameObject.GetComponent<Base_command>().status = 4;
+        maps[yellow_r + yellow_c * rows].transform.gameObject.GetComponent<yellow_command>().enabled = true;
+        maps[yellow_r + yellow_c * rows].transform.gameObject.GetComponent<Base_command>().status = 4;
 
 
         //地图创建好后进行倒计时，不至于猝不及防
@@ -156,4 +157,130 @@ public class mapCreater : MonoBehaviour
     {
         GameObject.Destroy(effect, 1);
     }*/
+
+    ArrayList getGrids(int rows, int cols, int n, int k)
+    {
+        ArrayList ans = new ArrayList();
+        int x = n / rows;
+        int y = n % rows;
+        for (int i = x - k; i <= x + k; i++)
+        {
+            if (i < 0 || i >= cols)
+                continue;
+            int difference = (i - x) >= 0 ? (i - x) : (x - i);
+            int baseN = 2 * k - difference;
+            int y1 = y - (int)(difference / 2) - (difference % 2) * ((x % 2) == 0 ? 0 : 1) - k + difference;
+            for (int j = y1; j <= y1 + baseN; j++)
+            {
+                if (j < 0 || j >= rows || (i == x && j == y))
+                    continue;
+                ans.Add(maps[i * rows + j]);
+            }
+        }
+        return ans;
+    }
+
+    //对外的接口，获得该编号格子作为k个单位内的格子，不包括自身
+    public ArrayList getGrids(int n, int k)
+    {
+        return getGrids(rows, cols, n, k);
+    }
+
+    GameObject getMap(float fx, float fy, int rows, int cols, float x, float y)
+    {
+        //左上角
+        float lx = fx - 0.5f;
+        float ly = fy + rates / 2;
+        //右下角
+        float rx = fx + (cols - 1) * 0.75f + 0.5f;
+        float ry = fy - rates * rows / 2 + rates / 4;
+        if (lx <= x && x <= rx && ly >= y && y >= ry)
+        {
+            if (x <= lx + 0.5f)
+            {
+                if (y <= ly - rates / 4)
+                {
+                    int cur_y = (int)((y - ry) / (rates / 2));
+                    return maps[rows - cur_y - 1];
+                }
+            }
+            else if (x >= rx - 0.5f)
+            {
+                Debug.Log("catch");
+                if (y >= ry + ((cols - 1) % 2 == 1 ? rates / 4 : 0))
+                {
+                    int cur_y = (int)((y - ry - ((cols - 1) % 2 == 1 ? (rates / 4) : 0)) / (rates / 2));
+                    return maps[rows * cols - cur_y - 1];
+                }
+            }
+            else
+            {
+                int cur_x = (int)((x - fx) / 0.75f);
+                int cur_y = (int)(rows - 1 - (int)((y - ry - ((cur_x % 2 == 1) ? (rates / 4) : 0)) / (rates / 2)));
+                if (cur_x % 2 == 0)
+                {
+                    float d1 = getDistance(new Vector3(x, y), maps[cur_x * rows + cur_y].transform.position);
+                    float d2 = getDistance(new Vector3(x, y), maps[(cur_x + 1) * rows + cur_y].transform.position);
+                    if (cur_y == rows - 1)
+                    {
+                        if (d1 < d2)
+                            return maps[cur_x * rows + cur_y];
+                        else
+                            return maps[(cur_x + 1) * rows + cur_y];
+                    }
+                    else
+                    {
+                        float d3 = getDistance(new Vector3(x, y), maps[(cur_x + 1) * rows + cur_y + 1].transform.position);
+                        if (d1 < d2)
+                            if (d1 < d3)
+                                return maps[cur_x * rows + cur_y];
+                            else
+                                return maps[(cur_x + 1) * rows + cur_y + 1];
+                        else
+                            if (d2 < d3)
+                            return maps[(cur_x + 1) * rows + cur_y];
+                        else
+                            return maps[(cur_x + 1) * rows + cur_y + 1];
+                    }
+                }
+                else
+                {
+                    float d1 = getDistance(new Vector3(x, y), maps[cur_x * rows + cur_y].transform.position);
+                    float d2 = getDistance(new Vector3(x, y), maps[(cur_x + 1) * rows + cur_y].transform.position);
+                    if (cur_y == 0)
+                    {
+                        if (d1 < d2)
+                            return maps[cur_x * rows + cur_y];
+                        else
+                            return maps[(cur_x + 1) * rows + cur_y];
+                    }
+                    else
+                    {
+                        float d3 = getDistance(new Vector3(x, y), maps[(cur_x + 1) * rows + cur_y - 1].transform.position);
+                        if (d1 < d2)
+                            if (d1 < d3)
+                                return maps[cur_x * rows + cur_y];
+                            else
+                                return maps[(cur_x + 1) * rows + cur_y - 1];
+                        else
+                            if (d2 < d3)
+                            return maps[(cur_x + 1) * rows + cur_y];
+                        else
+                            return maps[(cur_x + 1) * rows + cur_y - 1];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    //获取这个坐标上的格子，如果没有就会返回null
+    public GameObject getPointingMap(float x, float y)
+    {
+        return getMap(top_left_coordinate.x, top_left_coordinate.y, rows, cols, x, y);
+    }
+    float getDistance(Vector3 a, Vector3 b)
+    {
+        return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+    }
 }

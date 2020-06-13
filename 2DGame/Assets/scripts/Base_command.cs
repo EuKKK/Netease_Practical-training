@@ -37,6 +37,9 @@ public class Base_command : MonoBehaviour
 
     public float speed = 10f;
     public int status = 0;
+    
+    //格子的编号
+    public int number;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,132 +50,87 @@ public class Base_command : MonoBehaviour
     public Collider2D[] col;
     void Update()
     {
-        //lrs原版
-        /*col=Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
-        foreach(Collider2D cc in col){
-            int ccstatus=cc.gameObject.GetComponent<Base_command>().status;
-            if(ccstatus==2&&this.HP>0){
-                this.HP-=Time.deltaTime*speed;
-            }
-            else if(ccstatus==1&&this.HP<100)
-            {
-                this.HP+=Time.deltaTime*speed;
-            }
-            if(HP<=0&&this.status!=2)
-            {
-                this.gameObject.GetComponent<red_command>().enabled=true;
-                this.gameObject.GetComponent<green_command>().enabled=false;
-            }
-            else if(HP>=100&&this.status!=1)
-            {
-                this.gameObject.GetComponent<red_command>().enabled=false;
-                this.gameObject.GetComponent<green_command>().enabled=true;
-            }
-        }*/
-        /*
-        //主动攻击代替被动接受  仅存在于红、蓝
-        float attackdist;
-        if(this.status == 2 || this.status == 3)
-        {
-            if (this.status == 3)
-            {
-                //获取炮台数据
-                MapsBattery battery = this.gameObject.GetComponent<MapsBattery>();
-                batData = battery.getBatteryData();
-                attackdist = batData.cureDistance;
-            }
-            else attackdist = 0.5f;
 
-            col = Physics2D.OverlapCircleAll(this.transform.position, attackdist);
-            foreach (Collider2D cc in col)
-            {
-                if (this.status == 2)
-                {
-                    cc.gameObject.GetComponent<Base_command>().HP -= Time.deltaTime * speed;
-                }
-                else
-                {
-                    //暂定炮台治愈能力强于感染
-                    cc.gameObject.GetComponent<Base_command>().HP += Time.deltaTime * speed * batData.cureVal;
-                }
-
-                float cchp = cc.gameObject.GetComponent<Base_command>().HP;
-                int ccstatus = cc.gameObject.GetComponent<Base_command>().status;
-                if (cchp <= 0 && ccstatus != 2)
-                {
-                    //若为蓝转红，摧毁上方炮台
-                    if (ccstatus == 3)
-                    {
-                        GameObject.Destroy(cc.gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
-                        GreenNumber.numGreen -= 1;
-                    }
-                    else if(ccstatus == 1)
-                    {
-                        GreenNumber.numGreen -= 1;
-                    }
-                    cc.gameObject.GetComponent<Base_command>().HP = 0;
-                    cc.gameObject.GetComponent<red_command>().enabled = true;
-                    cc.gameObject.GetComponent<green_command>().enabled = false;
-                }
-                else if (cchp >= 100 && (ccstatus != 1&& ccstatus != 3))
-                {
-                    cchp = cc.gameObject.GetComponent<Base_command>().HP = 100;
-                    cc.gameObject.GetComponent<red_command>().enabled = false;
-                    cc.gameObject.GetComponent<green_command>().enabled = true;
-                    GreenNumber.numGreen += 1;
-                }
-            }
-        }
-        */
         //寻找能够攻击到本格子的目标，将他们的影响加到自身上
-        col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
-        foreach (Collider2D cc in col)
-        {
-            Base_command b = cc.gameObject.GetComponent<Base_command>();
-            float attrackValue = b.getAttackValue(this.gameObject);
-            //对于每一次攻击，都需要先减去护甲计算
-            if (attrackValue > 0)
-                attrackValue = (attrackValue - terrainData.armor)>0? (attrackValue - terrainData.armor):0;
-            else
-                attrackValue = (attrackValue + terrainData.armor) < 0 ? (attrackValue + terrainData.armor) : 0;
-            if (status == BLUE)
-            {
-                //若为蓝色，应对炮台施加影响，减去炮台HP
-                this.gameObject.GetComponent<MapsBattery>().batteryData.HP += Time.deltaTime * attrackValue;
-                this.gameObject.GetComponent<MapsBattery>().BatterySlider.value = this.gameObject.GetComponent<MapsBattery>().batteryData.HP / this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
-            }
-            else
-            {
-                HP += Time.deltaTime * attrackValue;
-            }
-        }
+        //col = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
+        //foreach (Collider2D cc in col)
+        //{
+        //    Base_command b = cc.gameObject.GetComponent<Base_command>();
+        //    float attrackValue = b.getAttackValue(this.gameObject);
+        //    //对于每一次攻击，都需要先减去护甲计算
+        //    if (attrackValue > 0)
+        //        attrackValue = (attrackValue - terrainData.armor)>0? (attrackValue - terrainData.armor):0;
+        //    else
+        //        attrackValue = (attrackValue + terrainData.armor) < 0 ? (attrackValue + terrainData.armor) : 0;
+        //    if (status == BLUE)
+        //    {
+        //        //若为蓝色，应对炮台施加影响，减去炮台HP
+        //        this.gameObject.GetComponent<MapsBattery>().batteryData.HP += Time.deltaTime * attrackValue;
+        //        this.gameObject.GetComponent<MapsBattery>().BatterySlider.value = this.gameObject.GetComponent<MapsBattery>().batteryData.HP / this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
+        //    }
+        //    else
+        //    {
+        //        HP += Time.deltaTime * attrackValue;
+        //    }
+        //}
 
         //自己对自己施加影响
+        //if (status == BLUE)
+        //{
+        //    //若为蓝色，应对炮台施加影响，减去炮台HP
+        //    this.gameObject.GetComponent<MapsBattery>().batteryData.HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+        //    this.gameObject.GetComponent<MapsBattery>().BatterySlider.value = this.gameObject.GetComponent<MapsBattery>().batteryData.HP / this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
+        //}
+        //else
+        //{
+        //    HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+        //}
+        //HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+        //新增---by lee 保存临时状态
+        /*
+            6.13转变为主动攻击，寻找范围内目标，操作他们的血量 
+            当且仅当格子状态为红蓝才会攻击
+        */
+        if (status == RED || status == BLUE)
+        {
+            GameObject mapsCreater = GameObject.Find("mapCreater");
+            foreach (GameObject g in mapsCreater.GetComponent<mapCreater>().getGrids(number, GetAttackDistance()))
+            {
+                g.GetComponent<Base_command>().ChangeHP(Time.deltaTime * getAttackValue(g));
+            }
+            //对自己操作
+            ChangeHP(Time.deltaTime * getAttackValue(gameObject));
+        }
+    }
+
+    //改变血量会引起状态改变因此封装到一起
+    public void ChangeHP(float attack)
+    {
+        //血量操作
         if (status == BLUE)
         {
             //若为蓝色，应对炮台施加影响，减去炮台HP
-            this.gameObject.GetComponent<MapsBattery>().batteryData.HP += Time.deltaTime * this.getAttackValue(this.gameObject);
-            this.gameObject.GetComponent<MapsBattery>().BatterySlider.value = this.gameObject.GetComponent<MapsBattery>().batteryData.HP / this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
+            gameObject.GetComponent<MapsBattery>().batteryData.HP += attack;
+            gameObject.GetComponent<MapsBattery>().BatterySlider.value = this.gameObject.GetComponent<MapsBattery>().batteryData.HP / this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
         }
         else
         {
-            HP += Time.deltaTime * this.getAttackValue(this.gameObject);
+            HP += attack;
         }
-        //HP += Time.deltaTime * this.getAttackValue(this.gameObject);
-        //新增---by lee 保存临时状态
-        if(status == BLUE)
+        //状态转换
+        if (status == BLUE)
         {
             //炮塔HP未到达0则无影响
             //上下界处理
-            if(this.gameObject.GetComponent<MapsBattery>().batteryData.HP > this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP)
+            if (gameObject.GetComponent<MapsBattery>().batteryData.HP > gameObject.GetComponent<MapsBattery>().batteryData.totalHP)
             {
-                this.gameObject.GetComponent<MapsBattery>().batteryData.HP = this.gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
+                gameObject.GetComponent<MapsBattery>().batteryData.HP = gameObject.GetComponent<MapsBattery>().batteryData.totalHP;
             }
-            else if(this.gameObject.GetComponent<MapsBattery>().batteryData.HP <= redThreshold)
+            else if (gameObject.GetComponent<MapsBattery>().batteryData.HP <= redThreshold)//《=可能有问题
             {
                 //摧毁炮台，改变状态
-                Vector3 position = this.gameObject.GetComponent<MapsBattery>().position;
-                GameObject.Destroy(this.gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
+                Vector3 position = gameObject.GetComponent<MapsBattery>().position;
+                GameObject.Destroy(gameObject.GetComponent<MapsBattery>().BatteryOnMaps);
                 GameObject effect = GameObject.Instantiate(DestoryEffect, position, Quaternion.identity);
                 GameObject.Destroy(effect, 1);
                 status = GREEN;
@@ -185,6 +143,7 @@ public class Base_command : MonoBehaviour
         else
         {
             int temp_status = status;
+            //超过绿色转换界限
             if (HP >= greenThreshold)
             {
                 if (status == WHITE || status == RED || status == YELLOW)
@@ -201,7 +160,7 @@ public class Base_command : MonoBehaviour
                 if (temp_status == YELLOW)
                     SceneManager.LoadScene(2);
             }
-            else if (HP <= redThreshold)
+            else if (HP <= redThreshold)    //超过红色转换界限
             {
                 if (status != RED)
                 {
@@ -233,7 +192,7 @@ public class Base_command : MonoBehaviour
                 HP = HPlowerThreshold;
         }
 
-}
+    }
 
     public float getAttackValue(GameObject g)
     {
@@ -255,5 +214,15 @@ public class Base_command : MonoBehaviour
     public void ChangeTerrain()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = terrainData.sprite;
+    }
+
+    //获取当前格子的攻击距离
+    int GetAttackDistance()
+    {
+        if (status == RED)
+            return gameObject.GetComponent<red_command>().GetAttackDistance();
+        else if (status == BLUE)
+            return gameObject.GetComponent<blue_command>().GetAttackDistance();
+        return 0;
     }
 }
