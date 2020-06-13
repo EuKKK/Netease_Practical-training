@@ -79,19 +79,19 @@ public class mapCreater : MonoBehaviour
         }
 
 
-        maps[red_r*cols+red_c].transform.gameObject.GetComponent<red_command>().enabled=true;
-        maps[red_r * cols + red_c].transform.gameObject.GetComponent<Base_command>().status = 2;
-        maps[red_r * cols + red_c].transform.gameObject.GetComponent<red_command>().turnRedEffects();
-        maps[red_r * cols + red_c].transform.gameObject.GetComponent<Base_command>().HP = -50;
+        maps[red_c * rows + red_r].transform.gameObject.GetComponent<red_command>().enabled=true;
+        maps[red_c * rows + red_r].transform.gameObject.GetComponent<Base_command>().status = 2;
+        maps[red_c * rows + red_r].transform.gameObject.GetComponent<red_command>().turnRedEffects();
+        maps[red_c * rows + red_r].transform.gameObject.GetComponent<Base_command>().HP = -50;
 
-        maps[green_r*cols+green_c].transform.gameObject.GetComponent<green_command>().enabled=true;
-        maps[green_r * cols + green_c].transform.gameObject.GetComponent<Base_command>().status = 1;
-        maps[green_r * cols + green_c].transform.gameObject.GetComponent<green_command>().turnGreenEffects();
+        maps[green_c * rows + green_r].transform.gameObject.GetComponent<green_command>().enabled=true;
+        maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().status = 1;
+        maps[green_c * rows + green_r].transform.gameObject.GetComponent<green_command>().turnGreenEffects();
         //根据地形计算第一块绿块的资源影响速率
-        GreenNumber.numGreen += maps[green_r * cols + green_c].transform.gameObject.GetComponent<Base_command>().terrainData.incRate;
+        GreenNumber.numGreen += maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().terrainData.incRate;
 
-        maps[yellow_r*cols+yellow_c].transform.gameObject.GetComponent<yellow_command>().enabled = true;
-        maps[yellow_r * cols + yellow_c].transform.gameObject.GetComponent<Base_command>().status = 4;
+        maps[yellow_c * rows + yellow_r].transform.gameObject.GetComponent<yellow_command>().enabled = true;
+        maps[yellow_c * rows + yellow_r].transform.gameObject.GetComponent<Base_command>().status = 4;
 
 
         //地图创建好后进行倒计时，不至于猝不及防
