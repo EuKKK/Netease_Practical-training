@@ -90,22 +90,26 @@ public class Base_command : MonoBehaviour
         /*
             6.13转变为主动攻击，寻找范围内目标，操作他们的血量 
             当且仅当格子状态为红蓝才会攻击
+            6.15
+            血量操作*SpeedControllor.gameSpeed，和游戏速度关联
         */
         if (status == RED || status == BLUE)
         {
             GameObject mapsCreater = GameObject.Find("mapCreater");
             foreach (GameObject g in mapsCreater.GetComponent<mapCreater>().getGrids(number, GetAttackDistance()))
             {
-                g.GetComponent<Base_command>().ChangeHP(Time.deltaTime * getAttackValue(g));
+                g.GetComponent<Base_command>().ChangeHP(Time.deltaTime * getAttackValue(g)*SpeedControllor.gameSpeed);
             }
             //对自己操作
-            ChangeHP(Time.deltaTime * getAttackValue(gameObject));
+            ChangeHP(Time.deltaTime * getAttackValue(gameObject) * SpeedControllor.gameSpeed);
         }
     }
 
     //改变血量会引起状态改变因此封装到一起
     public void ChangeHP(float attack)
     {
+        if (attack == 0)
+            return;
         //血量操作
         if (status == BLUE)
         {

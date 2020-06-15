@@ -136,9 +136,13 @@ public class BatteryManager : MonoBehaviour
             }
             n = GreenNumber.numGreen;
             //根据绿块数量改变资源增长
+            /*
+                6.15
+                加上*SpeedControllor.gameSpeed，即游戏速度的影响
+            */
             if (GreenNumber.numGreen > 0)
             {
-                incMoney += 1 / (10 * Mathf.Exp(GreenNumber.numGreen / 1000000000));
+                incMoney += (1 / (10 * Mathf.Exp(GreenNumber.numGreen / 1000000000))) * SpeedControllor.gameSpeed;
                 if (incMoney > 1)
                 {
                     ChangeMoney((int)incMoney);
