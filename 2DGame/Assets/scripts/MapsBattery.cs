@@ -42,8 +42,8 @@ public class MapsBattery : MonoBehaviour
 
     void OnMouseEnter()
     {
-        print("OnMouseEnter");
-        if(BatteryOnMaps == null && EventSystem.current.IsPointerOverGameObject() == false)
+        //print("OnMouseEnter");
+        if(BatteryOnMaps == null && EventSystem.current.IsPointerOverGameObject() == false) //
         {
             this.GetComponent<SpriteRenderer>().color = onColor;
         }
@@ -51,7 +51,17 @@ public class MapsBattery : MonoBehaviour
 
     void OnMouseExit()
     {
-        print("OnMouseExit");
-        this.GetComponent<SpriteRenderer>().color = srcColor;
+        /*private const int WHITE = 0;
+        private const int GREEN = 1;
+        private const int RED = 2;
+        private const int BLUE = 3;
+        private const int YELLOW = 4;*/
+        //print("OnMouseExit");
+        //判断状态，根据状态回归本色
+        int status = this.gameObject.GetComponent<Base_command>().status;
+        if (status == 2) this.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+        else if(status == 1) this.GetComponent<SpriteRenderer>().color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+        else if(status == 4) this.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+        else this.GetComponent<SpriteRenderer>().color = srcColor;
     }
 }
