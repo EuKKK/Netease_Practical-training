@@ -10,7 +10,7 @@ public class green_command : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+        color = new Color(0.46275f, 0.87059f, 0.50589f, 1.0f);
     }
 
     // Update is called once per frame

@@ -59,9 +59,9 @@ public class MapsBattery : MonoBehaviour
         //print("OnMouseExit");
         //判断状态，根据状态回归本色
         int status = this.gameObject.GetComponent<Base_command>().status;
-        if (status == 2) this.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-        else if(status == 1) this.GetComponent<SpriteRenderer>().color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
-        else if(status == 4) this.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+        if (status == 2) this.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.67843f, 0.72549f, 1.0f);
+        else if(status == 1) this.GetComponent<SpriteRenderer>().color = new Color(0.46275f, 0.87059f, 0.50589f, 1.0f);
+        else if(status == 4) this.GetComponent<SpriteRenderer>().color = new Color(0.87450f, 1.0f, 0.0f, 1.0f);
         else this.GetComponent<SpriteRenderer>().color = srcColor;
     }
 }

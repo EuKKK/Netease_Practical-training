@@ -11,7 +11,7 @@ public class red_command : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+        color = new Color(1.0f, 0.67843f, 0.72549f, 1.0f);
     }
 
     public float getAttackValue(GameObject gameObject)

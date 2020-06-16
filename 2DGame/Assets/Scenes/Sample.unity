@@ -1552,28 +1552,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commonTerrain:
     teerainType: 0
-    sprite: {fileID: 21300000, guid: 1882f52210f6fd84280869cd3e28556b, type: 3}
+    sprite: {fileID: 21300000, guid: 2a0698ecdaa84834597f1fa06747bd55, type: 3}
     armor: 0
     extraHP: 0
     extraCost: 0
     incRate: 0.1
   noMansLandTerrain:
     teerainType: 1
-    sprite: {fileID: 21300000, guid: ecf5395649d1336489dc3eb35467e5fa, type: 3}
+    sprite: {fileID: 21300000, guid: 7869e0cec4e6694498841a34a9a10ed0, type: 3}
     armor: 0
     extraHP: 0
     extraCost: 200
     incRate: 0.2
   plainTerrain:
     teerainType: 2
-    sprite: {fileID: 21300000, guid: 8c3ad1b3a599f2c45a0c29f2df32d05d, type: 3}
+    sprite: {fileID: 21300000, guid: 3f8d708ca2722ba47a60cd25b62fa8cb, type: 3}
     armor: 0
     extraHP: 0
     extraCost: 0
     incRate: 0.3
   valleyTerrain:
     teerainType: 3
-    sprite: {fileID: 21300000, guid: cc50556a0b3e4ae4b9d908412a5680f0, type: 3}
+    sprite: {fileID: 21300000, guid: 850546ab822f58844952423a9a58cecf, type: 3}
     armor: 0
     extraHP: 0
     extraCost: 0
@@ -1583,10 +1583,10 @@ MonoBehaviour:
   maps: []
   red_r: 0
   red_c: 0
-  yellow_r: 6
+  yellow_r: 1
   yellow_c: 6
-  green_r: 4
-  green_c: 2
+  green_r: 6
+  green_c: 6
   number1: {fileID: 0}
   number2: {fileID: 0}
   number3: {fileID: 0}

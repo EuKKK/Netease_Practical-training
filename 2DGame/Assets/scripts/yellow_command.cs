@@ -16,7 +16,7 @@ public class yellow_command : MonoBehaviour
     void Update()
     {
         SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
-        color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+        color = new Color(0.87450f, 1.0f, 0.0f, 1.0f);
 
         sprite.color = color;
 
