@@ -16,6 +16,7 @@ public class mapCreater : MonoBehaviour
 
     public GameObject map;
     public GameObject[] maps;
+    public GameObject red_effect;
     public int red_r, red_c, yellow_r, yellow_c, green_r, green_c;
 
     public GameObject number1;
@@ -28,8 +29,9 @@ public class mapCreater : MonoBehaviour
     public GameObject tgo;
     public Vector3 countDownPos = new Vector3(0, 0, -1);
 
-    public int rows;
-    public int cols;
+    public int level;
+    private int rows;
+    private int cols;
     public float width;                     //格子宽度
     private const float rates = 1.73205f;
     public bool is_align_center=true;       //是否居中
@@ -37,6 +39,34 @@ public class mapCreater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (level)
+        {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            default:
+                {
+                    rows = 8;
+                    cols = 12;
+                    terrainArray=new int[96] {  0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0,
+                                                0,0,0,0,0,0,0,0};
+                    break;
+                }
+        }
+
+
+
         maps = new GameObject[rows*cols];
         map = Resources.Load("Maps") as GameObject;
         number1 = Resources.Load("Num1") as GameObject;
@@ -44,6 +74,7 @@ public class mapCreater : MonoBehaviour
         number3 = Resources.Load("Num3") as GameObject;
         textGo = Resources.Load("Go") as GameObject;
 
+        red_effect = Resources.Load("redEffect") as GameObject;
 
         if (is_align_center)
         {
@@ -56,9 +87,15 @@ public class mapCreater : MonoBehaviour
             for (int i = 0; i < rows; i++)
             {
                 if (j % 2 == 0)
+                {
                     maps[rows * j + i] = Instantiate(map, new Vector3(top_left_coordinate.x + j * width * 3 / 4, top_left_coordinate.y - i * width * rates / 2, 0), Quaternion.identity);
+                    maps[rows * j + i].GetComponent<red_command>().red_effect = Instantiate(red_effect, new Vector3(top_left_coordinate.x + j * width * 3 / 4, top_left_coordinate.y - i * width * rates / 2, -50), Quaternion.identity);
+                }
                 else
+                {
                     maps[rows * j + i] = Instantiate(map, new Vector3(top_left_coordinate.x + j * width * 3 / 4, top_left_coordinate.y - i * width * rates / 2 + 0.5f * rates / 2, 0), Quaternion.identity);
+                    maps[rows * j + i].GetComponent<red_command>().red_effect = Instantiate(red_effect, new Vector3(top_left_coordinate.x + j * width * 3 / 4, top_left_coordinate.y - i * width * rates / 2 + 0.5f * rates / 2, -50), Quaternion.identity);
+                }
                 //根据terrainArray存储的信息，为格子加载地形
                 switch (terrainArray[rows * j + i])
                 {
@@ -77,6 +114,7 @@ public class mapCreater : MonoBehaviour
                 }
                 maps[rows * j + i].GetComponent<Base_command>().ChangeTerrain();
                 maps[rows * j + i].GetComponent<Base_command>().number = rows * j + i;
+                
             }
         }
 

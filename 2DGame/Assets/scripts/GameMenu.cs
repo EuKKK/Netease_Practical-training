@@ -10,6 +10,33 @@ public class GameMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void OnButtonSelect()
+    {
+        ButtonMoves.moveUp = true;
+    }
+
+    public void OnButtonReturn()
+    {
+        ButtonMoves.moveUp = false;
+    }
+
+    public void OnButtonLevel1()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void OnButtonLevel2()
+    {
+        SceneManager.LoadScene(5);
+    }
+    public void OnButtonLevel3()
+    {
+        SceneManager.LoadScene(6);
+    }
+    public void OnButtonLevel4()
+    {
+        SceneManager.LoadScene(7);
+    }
     public void OnButtonQuit()
     {
 #if UNITY_EDITOR

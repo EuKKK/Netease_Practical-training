@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class CameraControllor : MonoBehaviour
 {
-    public float movingSpeed;
-    public float scaleSpeed;
+    public float movingSpeed=2.0f;
+    public float scaleSpeed=0.5f;
     // Update is called once per frame
     void Update()
     {

@@ -152,6 +152,8 @@ public class Base_command : MonoBehaviour
             {
                 if (status == WHITE || status == RED || status == YELLOW)
                 {
+                    if (status == RED)
+                        gameObject.GetComponent<red_command>().ReSetRedEffects();
                     status = GREEN;
                     this.gameObject.GetComponent<red_command>().enabled = false;
                     this.gameObject.GetComponent<green_command>().enabled = true;
@@ -164,7 +166,7 @@ public class Base_command : MonoBehaviour
                 }
                 //判断变色之前是否为黄色，是则赢了
                 if (temp_status == YELLOW)
-                    SceneManager.LoadScene(2);
+                    SceneManager.LoadScene(3);
             }
             else if (HP <= redThreshold)    //超过红色转换界限
             {
@@ -193,7 +195,7 @@ public class Base_command : MonoBehaviour
                 }
                 ///新增---by lee 判断先前颜色是否为黄色，是输了
                 if (temp_status == YELLOW)
-                    SceneManager.LoadScene(3);
+                    SceneManager.LoadScene(2);
             }
             //设置上下限
             //需要考虑地形额外的HP
