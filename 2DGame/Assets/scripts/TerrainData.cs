@@ -15,8 +15,12 @@ public class TerrainData
     public float extraHP;
     //额外花费
     public int extraCost;
+    public int extraWaterCost;
+    public int extraElectricCost;
     //对资源增长速率的影响
     public float incRate;
+    public float incWaterRate;
+    public float incElectricRate;
 }
 public enum TeerainType
 {

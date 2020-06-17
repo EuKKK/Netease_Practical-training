@@ -89,8 +89,11 @@ public class mapCreater : MonoBehaviour
         maps[green_r+green_c*rows].transform.gameObject.GetComponent<green_command>().enabled=true;
         maps[green_r + green_c * rows].transform.gameObject.GetComponent<Base_command>().status = 1;
         maps[green_r + green_c * rows].transform.gameObject.GetComponent<green_command>().turnGreenEffects();
+
         //根据地形计算第一块绿块的资源影响速率
         GreenNumber.numGreen += maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().terrainData.incRate;
+        GreenNumber.numWater += maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().terrainData.incWaterRate;
+        GreenNumber.numElectric += maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().terrainData.incElectricRate;
 
         maps[yellow_r + yellow_c * rows].transform.gameObject.GetComponent<yellow_command>().enabled = true;
         maps[yellow_r + yellow_c * rows].transform.gameObject.GetComponent<Base_command>().status = 4;

@@ -48,6 +48,8 @@ MonoBehaviour:
     batteryPrefab: {fileID: 7173556395771248402, guid: 5f3909abec402604685f6e2ec1270b7c,
       type: 3}
     cost: 500
+    costWater: 0
+    codtElectric: 0
     type: 0
     cureDistance: 3
     cureVal: 15
@@ -57,6 +59,8 @@ MonoBehaviour:
     batteryPrefab: {fileID: 5550067328677839914, guid: d0ab20141cc28bc45a4eb3695bd7546d,
       type: 3}
     cost: 1000
+    costWater: 0
+    codtElectric: 0
     type: 1
     cureDistance: 1
     cureVal: 2.5
@@ -66,6 +70,8 @@ MonoBehaviour:
     batteryPrefab: {fileID: 1602387919625104189, guid: e2a8aa18b2d525d45bdba23fb6e805ee,
       type: 3}
     cost: 250
+    costWater: 0
+    codtElectric: 0
     type: 2
     cureDistance: 1
     cureVal: 1.5
@@ -74,6 +80,8 @@ MonoBehaviour:
   BatterySelectedData:
     batteryPrefab: {fileID: 0}
     cost: 0
+    costWater: 0
+    codtElectric: 0
     type: 0
     cureDistance: 0
     cureVal: 0
@@ -81,6 +89,8 @@ MonoBehaviour:
     HP: 0
   money: 2000
   moneyText: {fileID: 0}
+  waterText: {fileID: 0}
+  electricText: {fileID: 0}
   moneyAnimator: {fileID: 0}
   n: 0
 --- !u!114 &5071059604375815217

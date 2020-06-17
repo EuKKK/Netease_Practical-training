@@ -157,6 +157,8 @@ public class Base_command : MonoBehaviour
                     this.gameObject.GetComponent<green_command>().enabled = true;
                     //GreenNumber.numGreen += 1;
                     GreenNumber.numGreen += terrainData.incRate;
+                    GreenNumber.numWater += terrainData.incWaterRate;
+                    GreenNumber.numElectric += terrainData.incElectricRate;
                     //转换成绿色的具体操作
                     this.gameObject.GetComponent<green_command>().turnGreenEffects();
                 }
@@ -169,8 +171,13 @@ public class Base_command : MonoBehaviour
                 if (status != RED)
                 {
                     if (status == GREEN)
-                        //GreenNumber.numGreen -= 1;
+                    {
                         GreenNumber.numGreen -= terrainData.incRate;
+                        GreenNumber.numWater -= terrainData.incWaterRate;
+                        GreenNumber.numElectric -= terrainData.incElectricRate;
+                    }
+                        //GreenNumber.numGreen -= 1;
+                    
                     /*if (status == BLUE)
                     {
                         //摧毁炮塔

@@ -7,6 +7,8 @@ public class BatteryData
 {
     public GameObject batteryPrefab;
     public int cost;
+    public int costWater;
+    public int costElectric;
     public BatteryType type;
     public int cureDistance;
     public float cureVal;
