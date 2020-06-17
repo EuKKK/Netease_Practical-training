@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class mapCreater : MonoBehaviour
 {
-    //4种地形数据
+    //5种地形数据
     public TerrainData commonTerrain;
     public TerrainData noMansLandTerrain;
     public TerrainData plainTerrain;
     public TerrainData valleyTerrain;
+    public TerrainData cityTerrain;
     //地形数组，存储对应格子的地形，暂时没有更加好的加载方法
     public int[] terrainArray;
 

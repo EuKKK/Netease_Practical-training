@@ -23,5 +23,6 @@ public enum TeerainType
     COMMON,     //普通
     NOMANSLAND, //无人区
     PLAIN,      //平原
-    VALLEY      //山谷
+    VALLEY,     //山谷
+    CITY        //城市
 }
