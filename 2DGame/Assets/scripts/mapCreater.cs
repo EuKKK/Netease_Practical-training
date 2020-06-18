@@ -42,9 +42,97 @@ public class mapCreater : MonoBehaviour
         switch (level)
         {
             case 1:
+                {
+                    rows = 4;
+                    cols = 6;
+                    terrainArray = new int[24] { 0,2,2,0,
+                                             0,2,2,0,
+                                             0,4,0,3,
+                                             4,4,4,3,
+                                             4,4,4,3,
+                                             4,4,4,3 };
+                    red_r = 0;
+                    red_c = 4;
+                    green_r = 2;
+                    green_c = 1;
+                    yellow_r = 3;
+                    yellow_c = 4;
+                    break;
+                }
             case 2:
+                {
+                    rows = 9;
+                    cols = 12;
+                    terrainArray = new int[108] { 4,4,2,0,1,1,1,1,1,
+                                                  4,3,2,0,1,0,2,1,3,
+                                                  3,3,0,0,1,0,0,2,3,
+                                                  3,2,2,3,1,0,1,3,3,
+                                                  0,0,2,3,2,1,2,2,2,
+                                                  4,4,2,1,1,1,1,2,0,
+                                                  4,1,3,1,1,1,1,0,4,
+                                                  0,1,1,1,1,0,0,4,4,
+                                                  3,0,0,1,1,1,4,2,2,
+                                                  3,0,1,0,0,0,4,3,3,
+                                                  0,3,1,4,4,0,4,2,3,
+                                                  0,0,0,4,2,4,2,4,4 };
+                    red_r = 6;
+                    red_c = 7;
+                    green_r = 2;
+                    green_c = 2;
+                    yellow_r = 2;
+                    yellow_c = 8;
+                    break;
+                }
             case 3:
+                {
+                    rows = 12;
+                    cols = 12;
+                    terrainArray = new int[144] { 1,1,1,1,1,1,4,4,4,4,4,4,
+                                                  1,1,1,1,1,1,0,4,2,2,4,1,
+                                                  1,1,1,1,1,0,0,2,3,2,1,1,
+                                                  1,1,1,1,1,3,3,2,3,2,4,4,
+                                                  1,1,0,0,1,2,0,0,0,0,4,4,
+                                                  1,0,0,0,0,1,1,0,0,0,1,3,
+                                                  0,3,2,0,2,0,1,0,0,2,3,1,
+                                                  1,2,0,2,0,3,3,1,2,3,2,1,
+                                                  1,1,0,1,0,2,2,2,3,2,0,1,
+                                                  1,1,1,1,1,1,1,0,2,2,0,2,
+                                                  1,1,1,1,1,1,1,0,0,0,2,1,
+                                                  1,1,1,1,1,1,1,1,1,1,2,1 };
+                    red_r = 3;
+                    red_c = 6;
+                    green_r = 7;
+                    green_c = 3;
+                    yellow_r = 9;
+                    yellow_c = 6;
+                    break;
+                }
             case 4:
+                {
+                    rows = 11;
+                    cols = 14;
+                    terrainArray = new int[154] { 3,1,1,0,0,3,3,2,1,1,1,
+                                                  3,2,2,1,1,0,2,2,0,2,1,
+                                                  3,0,0,0,1,0,0,4,0,0,1,
+                                                  1,3,0,4,2,2,0,0,4,2,1,
+                                                  1,1,0,0,4,0,0,2,1,1,1,
+                                                  3,1,4,0,0,2,2,0,2,1,1,
+                                                  3,2,2,0,0,0,0,0,0,0,0,
+                                                  3,3,3,3,0,0,0,2,0,0,0,
+                                                  3,3,2,0,0,0,0,0,0,0,0,
+                                                  3,0,4,0,0,3,0,1,0,4,0,
+                                                  3,0,0,0,2,3,1,0,1,1,0,
+                                                  3,2,0,4,0,2,0,0,4,1,1,
+                                                  3,1,0,0,1,0,0,0,1,1,0,
+                                                  1,1,1,1,1,0,2,2,0,0,0 };
+                    red_r = 3;
+                    red_c = 11;
+                    green_r = 3;
+                    green_c = 3;
+                    yellow_r = 8;
+                    yellow_c = 3;
+                    break;
+                }
             default:
                 {
                     rows = 8;
@@ -108,8 +196,13 @@ public class mapCreater : MonoBehaviour
                     case 2:
                         maps[rows * j + i].GetComponent<Base_command>().terrainData = plainTerrain;
                         break;
-                    default:
+                    case 3:
                         maps[rows * j + i].GetComponent<Base_command>().terrainData = valleyTerrain;
+                        break;
+                    case 4:
+                        maps[rows * j + i].GetComponent<Base_command>().terrainData = cityTerrain;
+                        break;
+                    default:
                         break;
                 }
                 maps[rows * j + i].GetComponent<Base_command>().ChangeTerrain();

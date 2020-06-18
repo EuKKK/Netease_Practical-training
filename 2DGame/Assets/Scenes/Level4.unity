@@ -492,6 +492,46 @@ PrefabInstance:
       propertyPath: yellow_c
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: level
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: noMansLandTerrain.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7869e0cec4e6694498841a34a9a10ed0,
+        type: 3}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bd748b5cd83deb446bb45b3e6d205ae2,
+        type: 3}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 850546ab822f58844952423a9a58cecf,
+        type: 3}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8632e52ef8cdfd841a04306dbb128b68,
+        type: 3}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: commonTerrain.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2a0698ecdaa84834597f1fa06747bd55,
+        type: 3}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incRate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5267343780679269772, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: m_LocalPosition.x
