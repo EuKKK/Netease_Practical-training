@@ -2,52 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonMoves : MonoBehaviour
+public class Moves : MonoBehaviour
 {
-    public static bool moveUp=false;
+    //新增 -- by lee
+    public static bool moveLeft = false;
+    private float left;
+    private float left_higher;
 
-    private float upper;
-    private float lower;
     public float moveDistance;
     public float speed;
 
     private void Start()
     {
-        moveDistance = 100.0f;
+        moveDistance = 170.0f;
         speed = 80.0f;
         Vector3 p = gameObject.GetComponent<Transform>().position;
-        lower = p.y;
-        upper = moveDistance + lower;
+        //新增 -- by lee
+        left_higher = p.x;
+        left = left_higher - moveDistance;
     }
     // Update is called once per frame
     void Update()
     {
         Vector3 p = gameObject.GetComponent<Transform>().position;
-        if (moveUp)
+        if (moveLeft)
         {
-            if (p.y < upper)
+            if (p.x > left)
             {
-                p.y += Time.deltaTime * speed;
-                p.y = min(p.y, upper);
+                p.x -= Time.deltaTime * speed;
+                p.x = max(p.x, left);
                 gameObject.GetComponent<Transform>().position = p;
             }
         }
         else
         {
-            if (p.y > lower)
+            if (p.x < left_higher)
             {
-                p.y -= Time.deltaTime * speed;
-                p.y = max(p.y, lower);
+                p.x += Time.deltaTime * speed;
+                p.x = min(p.x, left_higher);
                 gameObject.GetComponent<Transform>().position = p;
             }
         }
+
         //新增 --by lee
     }
-    float max(float a,float b)
+    float max(float a, float b)
     {
         return a > b ? a : b;
     }
-    float min(float a,float b)
+    float min(float a, float b)
     {
         return a < b ? a : b;
     }

@@ -9,6 +9,16 @@ public class GameMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    //新增---by lee
+    public void OnButtonNewer()
+    {
+        Moves.moveLeft = true;
+    }
+    //新增 --by lee
+    public void OnButtonNewerReturn()
+    {
+        Moves.moveLeft = false;
+    }
 
     public void OnButtonSelect()
     {
