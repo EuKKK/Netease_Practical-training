@@ -507,7 +507,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plainTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bd748b5cd83deb446bb45b3e6d205ae2,
+      objectReference: {fileID: 21300000, guid: 3f8d708ca2722ba47a60cd25b62fa8cb,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
