@@ -161,20 +161,25 @@ public class BatteryManager : MonoBehaviour
             if (GreenNumber.numGreen > 0)
             {
                 incMoney += (0.05f / (10 * Mathf.Exp(GreenNumber.numGreen / 1000000000))) * SpeedControllor.gameSpeed;
-                incWater += (0.05f / (10 * Mathf.Exp(GreenNumber.numWater / 1000000000))) * SpeedControllor.gameSpeed;
-                incElectric += (0.05f / (10 * Mathf.Exp(GreenNumber.numElectric / 1000000000))) * SpeedControllor.gameSpeed;
-
                 if (incMoney > 1)
                 {
                     ChangeMoney((int)incMoney,0,0);
                     incMoney = 0;
                 }
-                if(incWater > 1)
+            }
+            if(GreenNumber.numWater > 0)
+            {
+                incWater += (0.05f / (10 * Mathf.Exp(GreenNumber.numWater / 1000000000))) * SpeedControllor.gameSpeed;
+                if (incWater > 1)
                 {
                     ChangeMoney(0, (int)incWater, 0);
                     incWater = 0;
                 }
-                if(incElectric > 1)
+            }
+            if(GreenNumber.numElectric > 0)
+            {
+                incElectric += (0.05f / (10 * Mathf.Exp(GreenNumber.numElectric / 1000000000))) * SpeedControllor.gameSpeed;
+                if (incElectric > 1)
                 {
                     ChangeMoney(0, 0, (int)incElectric);
                     incElectric = 0;
