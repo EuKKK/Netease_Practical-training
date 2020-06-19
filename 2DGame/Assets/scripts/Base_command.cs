@@ -108,6 +108,11 @@ public class Base_command : MonoBehaviour
     //改变血量会引起状态改变因此封装到一起
     public void ChangeHP(float attack)
     {
+        //对于每一次攻击，都需要先减去护甲计算
+        if (attack > 0)
+            attack = (attack - terrainData.armor) > 0 ? (attack - terrainData.armor) : 0;
+        else
+            attack = (attack + terrainData.armor) < 0 ? (attack + terrainData.armor) : 0;
         if (attack == 0)
             return;
         //血量操作
