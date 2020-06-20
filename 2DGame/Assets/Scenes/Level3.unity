@@ -563,6 +563,11 @@ PrefabInstance:
       propertyPath: noMansLandTerrain.armor
       value: 1e+13
       objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.teerainType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5267343780679269772, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: m_LocalPosition.x

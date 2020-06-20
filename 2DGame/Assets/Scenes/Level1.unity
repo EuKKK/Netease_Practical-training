@@ -266,6 +266,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ecf5395649d1336489dc3eb35467e5fa,
         type: 3}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.teerainType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5267343780679269772, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: m_LocalPosition.x
