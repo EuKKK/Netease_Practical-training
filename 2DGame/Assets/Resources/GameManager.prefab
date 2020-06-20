@@ -71,7 +71,7 @@ MonoBehaviour:
       type: 3}
     cost: 300
     costWater: 300
-    costElectric: 300
+    costElectric: 500
     type: 2
     cureDistance: 1
     cureVal: 10
@@ -94,6 +94,8 @@ MonoBehaviour:
   waterText: {fileID: 0}
   electricText: {fileID: 0}
   moneyAnimator: {fileID: 0}
+  waterAnimator: {fileID: 0}
+  electricAnimator: {fileID: 0}
   n: 0
 --- !u!114 &5071059604375815217
 MonoBehaviour:
