@@ -8,7 +8,7 @@ public class WinMenu : MonoBehaviour
     //继续游戏
     public void OnButtonContinue()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     //退出游戏

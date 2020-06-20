@@ -5,11 +5,11 @@ using UnityEngine;
 public class yellow_command : MonoBehaviour
 {
     public Color color;
-
+    public Sprite finalSprite;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.GetComponent<SpriteRenderer>().sprite = finalSprite;
     }
 
     // Update is called once per frame
