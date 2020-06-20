@@ -51,32 +51,32 @@ MonoBehaviour:
     costWater: 500
     costElectric: 500
     type: 0
-    cureDistance: 3
-    cureVal: 15
+    cureDistance: 1
+    cureVal: 8
     totalHP: 200
     HP: 200
   PowerStationData:
     batteryPrefab: {fileID: 5550067328677839914, guid: d0ab20141cc28bc45a4eb3695bd7546d,
       type: 3}
-    cost: 1000
-    costWater: 500
-    costElectric: 500
+    cost: 800
+    costWater: 600
+    costElectric: 800
     type: 1
-    cureDistance: 1
-    cureVal: 2.5
-    totalHP: 300
-    HP: 300
+    cureDistance: 2
+    cureVal: 15
+    totalHP: 400
+    HP: 400
   MaskFactoryData:
     batteryPrefab: {fileID: 1602387919625104189, guid: e2a8aa18b2d525d45bdba23fb6e805ee,
       type: 3}
-    cost: 250
-    costWater: 150
-    costElectric: 100
+    cost: 300
+    costWater: 300
+    costElectric: 500
     type: 2
     cureDistance: 1
-    cureVal: 1.5
-    totalHP: 150
-    HP: 150
+    cureVal: 10
+    totalHP: 100
+    HP: 100
   BatterySelectedData:
     batteryPrefab: {fileID: 0}
     cost: 0
@@ -94,6 +94,8 @@ MonoBehaviour:
   waterText: {fileID: 0}
   electricText: {fileID: 0}
   moneyAnimator: {fileID: 0}
+  waterAnimator: {fileID: 0}
+  electricAnimator: {fileID: 0}
   n: 0
 --- !u!114 &5071059604375815217
 MonoBehaviour:

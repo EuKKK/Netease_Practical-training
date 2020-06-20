@@ -10,6 +10,8 @@ public class BatteryManager : MonoBehaviour
     public BatteryData PowerStationData;
     public BatteryData MaskFactoryData;
 
+    public BatteryType h;
+
     private float lastTime;   //计时器
     private float curTime;
 
@@ -28,6 +30,8 @@ public class BatteryManager : MonoBehaviour
     public Text waterText;
     public Text electricText;
     public Animator moneyAnimator;
+    public Animator waterAnimator;
+    public Animator electricAnimator;
 
     public float n;
 
@@ -74,6 +78,10 @@ public class BatteryManager : MonoBehaviour
         moneyText.text = "" + money;
         waterText.text = "" + water;
         electricText.text = "" + electric;
+        //设置屏幕上相应炮台资源文本
+        setBatteryText(HospitalData);
+        setBatteryText(PowerStationData);
+        setBatteryText(MaskFactoryData);
     }
 
     // Update is called once per frame
@@ -116,26 +124,30 @@ public class BatteryManager : MonoBehaviour
 
                         MapsBattery battery = target.GetComponent<MapsBattery>();
                         int status = target.GetComponent<Base_command>().status;
-                        if (battery.BatteryOnMaps == null && status == 1)
+                        if (battery.BatteryOnMaps == null) //医院建立在绿色地皮上，其他炮台
                         {
-                            //map空即能进行建造
-                            //判断资源知否足以创建炮台
-                            //不同地形额外cost不一样需要加上
-                            int cost = BatterySelectedData.cost + target.GetComponent<Base_command>().terrainData.extraCost;
-                            int costWater = BatterySelectedData.costWater + target.GetComponent<Base_command>().terrainData.extraWaterCost;
-                            int costElectric = BatterySelectedData.costElectric + target.GetComponent<Base_command>().terrainData.extraElectricCost;
-                            if (money >= cost && water >= costWater && electric >= costElectric)
+                            if ( BatterySelectedData.type == h && status == 1 || (BatterySelectedData.type != h && (status != 2 && status != 4)))
                             {
-                                ChangeMoney(-cost, -costWater, -costElectric);
-                                battery.BuildBattery(BatterySelectedData.batteryPrefab, BatterySelectedData);
-                                target.GetComponent<Base_command>().status = 3;
-                                target.GetComponent<blue_command>().enabled = true;
-                                target.GetComponent<blue_command>().turnBlueEffects();
-                            }
-                            else
-                            {
-                                //TODO 进行资源不足提示
-                                moneyAnimator.SetTrigger("NoMoney");
+                                //map空即能进行建造
+                                //判断资源知否足以创建炮台
+                                //不同地形额外cost不一样需要加上
+                                int cost = BatterySelectedData.cost + target.GetComponent<Base_command>().terrainData.extraCost;
+                                int costWater = BatterySelectedData.costWater + target.GetComponent<Base_command>().terrainData.extraWaterCost;
+                                int costElectric = BatterySelectedData.costElectric + target.GetComponent<Base_command>().terrainData.extraElectricCost;
+                                if (money >= cost && water >= costWater && electric >= costElectric)
+                                {
+                                    ChangeMoney(-cost, -costWater, -costElectric);
+                                    battery.BuildBattery(BatterySelectedData.batteryPrefab, BatterySelectedData);
+                                    target.GetComponent<Base_command>().status = 3;
+                                    target.GetComponent<blue_command>().enabled = true;
+                                    target.GetComponent<blue_command>().turnBlueEffects();
+                                }
+                                else
+                                {
+                                    if (money < cost) moneyAnimator.SetTrigger("NoMoney");
+                                    if (water < costWater) waterAnimator.SetTrigger("NoMoney");
+                                    if (electric < costElectric) electricAnimator.SetTrigger("NoMoney");
+                                }
                             }
                         }
                         else
@@ -160,21 +172,32 @@ public class BatteryManager : MonoBehaviour
             */
             if (GreenNumber.numGreen > 0)
             {
-                incMoney += (0.05f / (10 * Mathf.Exp(GreenNumber.numGreen / 1000000000))) * SpeedControllor.gameSpeed;
-                incWater += (0.05f / (10 * Mathf.Exp(GreenNumber.numWater / 1000000000))) * SpeedControllor.gameSpeed;
-                incElectric += (0.05f / (10 * Mathf.Exp(GreenNumber.numElectric / 1000000000))) * SpeedControllor.gameSpeed;
-
+                incMoney += 0.05f * Mathf.Exp(GreenNumber.numGreen / 10000) * SpeedControllor.gameSpeed;
+                //incMoney += (0.05f / (10 * Mathf.Exp(GreenNumber.numGreen / 1000000000))) * SpeedControllor.gameSpeed;
+                //print("incMoney " + incMoney);
                 if (incMoney > 1)
                 {
                     ChangeMoney((int)incMoney,0,0);
                     incMoney = 0;
                 }
-                if(incWater > 1)
+            }
+            if(GreenNumber.numWater > 0)
+            {
+                incWater += 0.05f * Mathf.Exp(GreenNumber.numWater / 10000) * SpeedControllor.gameSpeed;
+                //incWater += (0.05f / (10 * Mathf.Exp(GreenNumber.numWater / 1000000000))) * SpeedControllor.gameSpeed;
+                //print("incWater " + incWater);
+                if (incWater > 1)
                 {
                     ChangeMoney(0, (int)incWater, 0);
                     incWater = 0;
                 }
-                if(incElectric > 1)
+            }
+            if(GreenNumber.numElectric > 0)
+            {
+                incElectric += 0.05f * Mathf.Exp(GreenNumber.numElectric / 10000) * SpeedControllor.gameSpeed;
+                //incElectric += (0.05f / (10 * Mathf.Exp(GreenNumber.numElectric / 1000000000))) * SpeedControllor.gameSpeed;
+                //print("incElectric " + incElectric);
+                if (incElectric > 1)
                 {
                     ChangeMoney(0, 0, (int)incElectric);
                     incElectric = 0;
@@ -186,5 +209,12 @@ public class BatteryManager : MonoBehaviour
     float getDistance(Vector3 a, Vector3 b)
     {
         return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+    }
+
+    void setBatteryText(BatteryData bd)
+    {
+        bd.textMoney.text = "" + bd.cost;
+        bd.textWater.text = "" + bd.costWater;
+        bd.textElectric.text = "" + bd.costElectric;
     }
 }

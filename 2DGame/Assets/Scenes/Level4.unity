@@ -501,31 +501,31 @@ PrefabInstance:
         type: 3}
       propertyPath: noMansLandTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7869e0cec4e6694498841a34a9a10ed0,
+      objectReference: {fileID: 21300000, guid: 3558e98feb102814e80af6736dd371ff,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: plainTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3f8d708ca2722ba47a60cd25b62fa8cb,
+      objectReference: {fileID: 21300000, guid: ecf5395649d1336489dc3eb35467e5fa,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: cityTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 850546ab822f58844952423a9a58cecf,
+      objectReference: {fileID: 21300000, guid: 0eb28fbb1ce46e244ba3e9d64b19da56,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: valleyTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8632e52ef8cdfd841a04306dbb128b68,
+      objectReference: {fileID: 21300000, guid: e5294f7b085ddfd4f907ef7b4c9abdce,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: commonTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2a0698ecdaa84834597f1fa06747bd55,
+      objectReference: {fileID: 21300000, guid: 1882f52210f6fd84280869cd3e28556b,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
@@ -636,6 +636,12 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnHospitalSelected
       objectReference: {fileID: 0}
+    - target: {fileID: 5247464067309517131, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7de790523aea14846ac83a9c51c44201,
+        type: 3}
     - target: {fileID: 5247464067626051242, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
