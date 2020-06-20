@@ -28,6 +28,8 @@ public class BatteryManager : MonoBehaviour
     public Text waterText;
     public Text electricText;
     public Animator moneyAnimator;
+    public Animator waterAnimator;
+    public Animator electricAnimator;
 
     public float n;
 
@@ -134,8 +136,9 @@ public class BatteryManager : MonoBehaviour
                             }
                             else
                             {
-                                //TODO 进行资源不足提示
-                                moneyAnimator.SetTrigger("NoMoney");
+                                if(money < cost) moneyAnimator.SetTrigger("NoMoney");
+                                if (water < costWater) waterAnimator.SetTrigger("NoMoney");
+                                if(electric <costElectric) electricAnimator.SetTrigger("NoMoney");
                             }
                         }
                         else
@@ -160,7 +163,9 @@ public class BatteryManager : MonoBehaviour
             */
             if (GreenNumber.numGreen > 0)
             {
-                incMoney += (0.05f / (10 * Mathf.Exp(GreenNumber.numGreen / 1000000000))) * SpeedControllor.gameSpeed;
+                incMoney += 0.05f * Mathf.Exp(GreenNumber.numGreen / 10000) * SpeedControllor.gameSpeed;
+                //incMoney += (0.05f / (10 * Mathf.Exp(GreenNumber.numGreen / 1000000000))) * SpeedControllor.gameSpeed;
+                //print("incMoney " + incMoney);
                 if (incMoney > 1)
                 {
                     ChangeMoney((int)incMoney,0,0);
@@ -169,7 +174,9 @@ public class BatteryManager : MonoBehaviour
             }
             if(GreenNumber.numWater > 0)
             {
-                incWater += (0.05f / (10 * Mathf.Exp(GreenNumber.numWater / 1000000000))) * SpeedControllor.gameSpeed;
+                incWater += 0.05f * Mathf.Exp(GreenNumber.numWater / 10000) * SpeedControllor.gameSpeed;
+                //incWater += (0.05f / (10 * Mathf.Exp(GreenNumber.numWater / 1000000000))) * SpeedControllor.gameSpeed;
+                //print("incWater " + incWater);
                 if (incWater > 1)
                 {
                     ChangeMoney(0, (int)incWater, 0);
@@ -178,7 +185,9 @@ public class BatteryManager : MonoBehaviour
             }
             if(GreenNumber.numElectric > 0)
             {
-                incElectric += (0.05f / (10 * Mathf.Exp(GreenNumber.numElectric / 1000000000))) * SpeedControllor.gameSpeed;
+                incElectric += 0.05f * Mathf.Exp(GreenNumber.numElectric / 10000) * SpeedControllor.gameSpeed;
+                //incElectric += (0.05f / (10 * Mathf.Exp(GreenNumber.numElectric / 1000000000))) * SpeedControllor.gameSpeed;
+                //print("incElectric " + incElectric);
                 if (incElectric > 1)
                 {
                     ChangeMoney(0, 0, (int)incElectric);

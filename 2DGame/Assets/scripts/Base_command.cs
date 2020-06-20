@@ -166,6 +166,7 @@ public class Base_command : MonoBehaviour
                     GreenNumber.numGreen += terrainData.incRate;
                     GreenNumber.numWater += terrainData.incWaterRate;
                     GreenNumber.numElectric += terrainData.incElectricRate;
+                    //print("Green inc Rate: " + GreenNumber.numGreen);
                     //转换成绿色的具体操作
                     this.gameObject.GetComponent<green_command>().turnGreenEffects();
                 }

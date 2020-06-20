@@ -223,6 +223,7 @@ public class mapCreater : MonoBehaviour
         GreenNumber.numGreen += maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().terrainData.incRate;
         GreenNumber.numWater += maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().terrainData.incWaterRate;
         GreenNumber.numElectric += maps[green_c * rows + green_r].transform.gameObject.GetComponent<Base_command>().terrainData.incElectricRate;
+        //print("Green inc Rate: " + GreenNumber.numGreen);
 
         maps[yellow_r + yellow_c * rows].transform.gameObject.GetComponent<yellow_command>().enabled = true;
         maps[yellow_r + yellow_c * rows].transform.gameObject.GetComponent<Base_command>().status = 4;

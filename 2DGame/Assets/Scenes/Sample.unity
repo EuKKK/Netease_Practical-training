@@ -187,6 +187,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6a62b4ea40ee44ab1b1312861dce3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1248789448 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1376539401944089027, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5247464067131415323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1405158381
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +291,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingSpeed: 2
   scaleSpeed: 0.5
+--- !u!95 &1517954531 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4784435501608678004, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5247464067131415323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &180164666284890978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,6 +582,16 @@ PrefabInstance:
       propertyPath: MaskFactoryData.costElectric
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5071059604375815183, guid: 874e171e9465bba489aa8cca3356be30,
+        type: 3}
+      propertyPath: waterAnimator
+      value: 
+      objectReference: {fileID: 1248789448}
+    - target: {fileID: 5071059604375815183, guid: 874e171e9465bba489aa8cca3356be30,
+        type: 3}
+      propertyPath: electricAnimator
+      value: 
+      objectReference: {fileID: 1517954531}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874e171e9465bba489aa8cca3356be30, type: 3}
 --- !u!1001 &5247464067131415323
@@ -822,6 +844,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mapCreater
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: commonTerrain.incRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: noMansLandTerrain.incRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incRate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incWaterRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incElectricRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incWaterRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incElectricRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incWaterRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: commonTerrain.incWaterRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: noMansLandTerrain.incWaterRate
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5267343780679269772, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
