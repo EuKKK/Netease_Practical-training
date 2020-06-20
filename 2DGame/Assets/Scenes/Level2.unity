@@ -186,6 +186,12 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnHospitalSelected
       objectReference: {fileID: 0}
+    - target: {fileID: 5247464067309517131, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b625b27d3c06cd43b85deff28822702,
+        type: 3}
     - target: {fileID: 5247464067626051242, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -449,19 +455,19 @@ PrefabInstance:
         type: 3}
       propertyPath: commonTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a005896ed6eb0eb4da64330aa4a4f351,
+      objectReference: {fileID: 21300000, guid: 1882f52210f6fd84280869cd3e28556b,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: noMansLandTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c09694a1cd663e04bb4bc1d9ef1b2ddf,
+      objectReference: {fileID: 21300000, guid: 3558e98feb102814e80af6736dd371ff,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: plainTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cc50556a0b3e4ae4b9d908412a5680f0,
+      objectReference: {fileID: 21300000, guid: ecf5395649d1336489dc3eb35467e5fa,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
@@ -473,7 +479,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cityTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3558e98feb102814e80af6736dd371ff,
+      objectReference: {fileID: 21300000, guid: 0eb28fbb1ce46e244ba3e9d64b19da56,
         type: 3}
     - target: {fileID: 5267343780679269772, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}

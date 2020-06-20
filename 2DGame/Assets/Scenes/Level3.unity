@@ -255,6 +255,12 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnHospitalSelected
       objectReference: {fileID: 0}
+    - target: {fileID: 5247464067309517131, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ddd41fe40f5bdb6468218bfbff520581,
+        type: 3}
     - target: {fileID: 5247464067626051242, guid: 52a567cd5acdf8b4097e1a59ce3980b8,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -527,7 +533,7 @@ PrefabInstance:
         type: 3}
       propertyPath: noMansLandTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c09694a1cd663e04bb4bc1d9ef1b2ddf,
+      objectReference: {fileID: 21300000, guid: 3558e98feb102814e80af6736dd371ff,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
@@ -539,13 +545,13 @@ PrefabInstance:
         type: 3}
       propertyPath: valleyTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7869e0cec4e6694498841a34a9a10ed0,
+      objectReference: {fileID: 21300000, guid: e5294f7b085ddfd4f907ef7b4c9abdce,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: cityTerrain.sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e5294f7b085ddfd4f907ef7b4c9abdce,
+      objectReference: {fileID: 21300000, guid: 0eb28fbb1ce46e244ba3e9d64b19da56,
         type: 3}
     - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
