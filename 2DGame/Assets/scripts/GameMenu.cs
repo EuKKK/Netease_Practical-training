@@ -14,7 +14,6 @@ public class GameMenu : MonoBehaviour
     {
         Moves.moveLeft = true;
        (Moves.count)++;
-       Moves.first = true;
     }
     //新增 --by lee
     public void OnButtonNewerReturn()
@@ -27,7 +26,6 @@ public class GameMenu : MonoBehaviour
     {
         if(Moves.count == 1);
         else{
-            //Moves.count = 3;
             (Moves.count)--;
             Moves.moveLeft = true;
         }
