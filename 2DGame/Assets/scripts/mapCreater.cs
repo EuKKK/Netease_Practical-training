@@ -104,12 +104,12 @@ public class mapCreater : MonoBehaviour
                                                   1,1,1,1,1,1,1,0,2,2,2,0,0,3,2,2,4,0,3,2,3,0,2,0,
                                                   1,1,1,1,1,1,1,4,2,2,0,0,4,3,3,2,3,2,3,3,3,3,0,0
                                                 };
-                    red_r = 3;
-                    red_c = 6;
+                    red_r = 7;
+                    red_c = 19;
                     green_r = 7;
-                    green_c = 3;
-                    yellow_r = 9;
-                    yellow_c = 6;
+                    green_c = 2;
+                    yellow_r = 19;
+                    yellow_c = 7;
                     break;
                 }
             case 4:
