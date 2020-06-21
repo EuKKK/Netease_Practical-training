@@ -145,6 +145,7 @@ public class BatteryManager : MonoBehaviour
                                 if (money < cost) moneyAnimator.SetTrigger("NoMoney");
                                 if (water < costWater) waterAnimator.SetTrigger("NoMoney");
                                 if (electric < costElectric) electricAnimator.SetTrigger("NoMoney");
+                                //Debug.Log("cost: " + cost + " " + costWater + " " + costElectric);
                             }
                         }
                         else
