@@ -1202,6 +1202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5247464066143145431}
   - component: {fileID: 5247464066143145430}
+  - component: {fileID: 171082696182357761}
   m_Layer: 5
   m_Name: BatteryMaskFactory
   m_TagString: Untagged
@@ -1291,6 +1292,32 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &171082696182357761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247464066143145424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatterySelectedData:
+    batteryPrefab: {fileID: 1602387919625104189, guid: e2a8aa18b2d525d45bdba23fb6e805ee,
+      type: 3}
+    cost: 300
+    costWater: 300
+    costElectric: 500
+    type: 2
+    cureDistance: 1
+    cureVal: 10
+    totalHP: 100
+    HP: 100
+    textMoney: {fileID: 0}
+    textWater: {fileID: 0}
+    textElectric: {fileID: 0}
 --- !u!1 &5247464066168873726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,6 +2124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5247464067253184543}
   - component: {fileID: 5247464067253184542}
+  - component: {fileID: 7310608582934328314}
   m_Layer: 5
   m_Name: BatteryHospital
   m_TagString: Untagged
@@ -2186,6 +2214,32 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &7310608582934328314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247464067253184536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatterySelectedData:
+    batteryPrefab: {fileID: 7173556395771248402, guid: 5f3909abec402604685f6e2ec1270b7c,
+      type: 3}
+    cost: 500
+    costWater: 500
+    costElectric: 500
+    type: 0
+    cureDistance: 2
+    cureVal: 8
+    totalHP: 200
+    HP: 200
+    textMoney: {fileID: 0}
+    textWater: {fileID: 0}
+    textElectric: {fileID: 0}
 --- !u!1 &5247464067309517141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,6 +2700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5247464067626051243}
   - component: {fileID: 5247464067626051242}
+  - component: {fileID: 498564120233164400}
   m_Layer: 5
   m_Name: BatteryPowerStation
   m_TagString: Untagged
@@ -2735,6 +2790,32 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &498564120233164400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247464067626051252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatterySelectedData:
+    batteryPrefab: {fileID: 5550067328677839914, guid: d0ab20141cc28bc45a4eb3695bd7546d,
+      type: 3}
+    cost: 800
+    costWater: 600
+    costElectric: 800
+    type: 1
+    cureDistance: 3
+    cureVal: 15
+    totalHP: 400
+    HP: 400
+    textMoney: {fileID: 0}
+    textWater: {fileID: 0}
+    textElectric: {fileID: 0}
 --- !u!1 &5247464067662745022
 GameObject:
   m_ObjectHideFlags: 0

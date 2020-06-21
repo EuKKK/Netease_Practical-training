@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{8A3A7B60-0E04-E1C4-071B-6792558F2011}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/BatteryManager.cs">
+    <Files>
+      <File FileName="Assets/scripts/DragEvent.cs" Line="129" Column="2" />
+      <File FileName="Assets/scripts/BatteryManager.cs" Line="203" Column="1" />
+      <File FileName="Assets/scripts/MapsBattery.cs" />
+      <File FileName="Assets/scripts/mapCreater.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="scripts" expanded="True">
+                <Node name="BatteryManager.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f265c5a2-ba63-49f8-928f-751c9099fbea" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

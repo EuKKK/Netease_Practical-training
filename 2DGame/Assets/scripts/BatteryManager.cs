@@ -59,7 +59,7 @@ public class BatteryManager : MonoBehaviour
     }
 
     //资源管理
-    void ChangeMoney(int change = 0, int changeWater =0, int changeElectric =0)
+    public void ChangeMoney(int change = 0, int changeWater =0, int changeElectric =0)
     {
         money += change;
         water += changeWater;
@@ -107,21 +107,6 @@ public class BatteryManager : MonoBehaviour
 
                     if (target!=null)
                     {
-                        //int index = 0;
-                        //int minIndex = 0;
-                        //float distance = 10f;
-                        //foreach (Collider2D cc in col)
-                        //{
-                        //    float d = getDistance(screenPos, cc.gameObject.GetComponent<Transform>().position);
-                        //    if (d < distance)
-                        //    {
-                        //        minIndex = index;
-                        //        distance = d;
-                        //    }
-
-                        //    index++;
-                        //}
-
                         MapsBattery battery = target.GetComponent<MapsBattery>();
                         int status = target.GetComponent<Base_command>().status;
                         if (battery.BatteryOnMaps == null && status == 1) //医院建立在绿色地皮上，其他炮台
@@ -145,7 +130,6 @@ public class BatteryManager : MonoBehaviour
                                 if (money < cost) moneyAnimator.SetTrigger("NoMoney");
                                 if (water < costWater) waterAnimator.SetTrigger("NoMoney");
                                 if (electric < costElectric) electricAnimator.SetTrigger("NoMoney");
-                                //Debug.Log("cost: " + cost + " " + costWater + " " + costElectric);
                             }
                         }
                         else
