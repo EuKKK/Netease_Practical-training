@@ -606,6 +606,56 @@ PrefabInstance:
       propertyPath: cityTerrain.teerainType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incWaterRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incElectricRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incWaterRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incElectricRate
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incWaterRate
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incElectricRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: commonTerrain.incRate
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5267343780679269772, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
       propertyPath: m_LocalPosition.x

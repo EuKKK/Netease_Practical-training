@@ -661,6 +661,16 @@ PrefabInstance:
       propertyPath: MaskFactoryData.textElectric
       value: 
       objectReference: {fileID: 447221608}
+    - target: {fileID: 5071059604375815183, guid: 874e171e9465bba489aa8cca3356be30,
+        type: 3}
+      propertyPath: MaskFactoryData.costElectric
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071059604375815183, guid: 874e171e9465bba489aa8cca3356be30,
+        type: 3}
+      propertyPath: PowerStationData.costElectric
+      value: 600
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874e171e9465bba489aa8cca3356be30, type: 3}
 --- !u!114 &1428397566 stripped
@@ -736,6 +746,56 @@ PrefabInstance:
         type: 3}
       propertyPath: cityTerrain.teerainType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incRate
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incWaterRate
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: plainTerrain.incElectricRate
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: commonTerrain.incRate
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incRate
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incWaterRate
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: valleyTerrain.incElectricRate
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incRate
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incWaterRate
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267343780679269763, guid: a3f274078b31e4c42aee71114ecb4344,
+        type: 3}
+      propertyPath: cityTerrain.incElectricRate
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 5267343780679269772, guid: a3f274078b31e4c42aee71114ecb4344,
         type: 3}
