@@ -39,6 +39,10 @@ public class mapCreater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //拒绝历史遗留问题
+        GreenNumber.numGreen = 0;
+        GreenNumber.numWater = 0;
+        GreenNumber.numElectric = 0;
         switch (level)
         {
             case 1:

@@ -122,7 +122,7 @@ public class MapsBattery : MonoBehaviour
             style1.fontSize = 15;
             style1.normal.textColor = Color.red;
             GUI.Label(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y, 400, 50), mapName, style1);*/
-            GUI.Window(0, new Rect(Input.mousePosition.x+20, Screen.height - Input.mousePosition.y, 160, 80), MyWindow, mapName);
+            GUI.Window(0, new Rect(Input.mousePosition.x-180, Screen.height - Input.mousePosition.y+10, 160, 80), MyWindow, mapName);
         }
     }
 
