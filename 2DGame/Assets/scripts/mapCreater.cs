@@ -138,7 +138,7 @@ public class mapCreater : MonoBehaviour
                     green_r = 3;
                     green_c = 3;
                     yellow_r = 8;
-                    yellow_c = 3;
+                    yellow_c = 2;
                     break;
                 }
             default:
