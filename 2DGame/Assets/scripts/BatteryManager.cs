@@ -124,30 +124,27 @@ public class BatteryManager : MonoBehaviour
 
                         MapsBattery battery = target.GetComponent<MapsBattery>();
                         int status = target.GetComponent<Base_command>().status;
-                        if (battery.BatteryOnMaps == null) //医院建立在绿色地皮上，其他炮台
+                        if (battery.BatteryOnMaps == null && status == 1) //医院建立在绿色地皮上，其他炮台
                         {
-                            if ( BatterySelectedData.type == h && status == 1 || (BatterySelectedData.type != h && (status != 2 && status != 4)))
+                            //map空即能进行建造
+                            //判断资源知否足以创建炮台
+                            //不同地形额外cost不一样需要加上
+                            int cost = BatterySelectedData.cost + target.GetComponent<Base_command>().terrainData.extraCost;
+                            int costWater = BatterySelectedData.costWater + target.GetComponent<Base_command>().terrainData.extraWaterCost;
+                            int costElectric = BatterySelectedData.costElectric + target.GetComponent<Base_command>().terrainData.extraElectricCost;
+                            if (money >= cost && water >= costWater && electric >= costElectric)
                             {
-                                //map空即能进行建造
-                                //判断资源知否足以创建炮台
-                                //不同地形额外cost不一样需要加上
-                                int cost = BatterySelectedData.cost + target.GetComponent<Base_command>().terrainData.extraCost;
-                                int costWater = BatterySelectedData.costWater + target.GetComponent<Base_command>().terrainData.extraWaterCost;
-                                int costElectric = BatterySelectedData.costElectric + target.GetComponent<Base_command>().terrainData.extraElectricCost;
-                                if (money >= cost && water >= costWater && electric >= costElectric)
-                                {
-                                    ChangeMoney(-cost, -costWater, -costElectric);
-                                    battery.BuildBattery(BatterySelectedData.batteryPrefab, BatterySelectedData);
-                                    target.GetComponent<Base_command>().status = 3;
-                                    target.GetComponent<blue_command>().enabled = true;
-                                    target.GetComponent<blue_command>().turnBlueEffects();
-                                }
-                                else
-                                {
-                                    if (money < cost) moneyAnimator.SetTrigger("NoMoney");
-                                    if (water < costWater) waterAnimator.SetTrigger("NoMoney");
-                                    if (electric < costElectric) electricAnimator.SetTrigger("NoMoney");
-                                }
+                                ChangeMoney(-cost, -costWater, -costElectric);
+                                battery.BuildBattery(BatterySelectedData.batteryPrefab, BatterySelectedData);
+                                target.GetComponent<Base_command>().status = 3;
+                                target.GetComponent<blue_command>().enabled = true;
+                                target.GetComponent<blue_command>().turnBlueEffects();
+                            }
+                            else
+                            {
+                                if (money < cost) moneyAnimator.SetTrigger("NoMoney");
+                                if (water < costWater) waterAnimator.SetTrigger("NoMoney");
+                                if (electric < costElectric) electricAnimator.SetTrigger("NoMoney");
                             }
                         }
                         else
