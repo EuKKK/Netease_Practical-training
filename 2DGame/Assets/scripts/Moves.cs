@@ -10,9 +10,6 @@ public class Moves : MonoBehaviour
     private float left;
     private float left_higher;
 
-    public static bool first = false;
-
-    public static bool flag = false;
     public static int count = 0;
     public float moveDistance;
     public float speed;
@@ -34,7 +31,7 @@ public class Moves : MonoBehaviour
     {   
         Vector3 p = gameObject.GetComponent<Transform>().position;
         if (moveLeft)
-        {
+        {//count控制目前是第几张指引图
             moveDistance = 170.0f * count;
             left = left_higher - moveDistance;
             if (p.x > left)
@@ -45,8 +42,7 @@ public class Moves : MonoBehaviour
             }
         }
         else
-        {
-            //speed = 400.0f;
+        {//这里是控制在最后点返回时，直接移动到启动界面
             left = left_higher;
             if (p.x > left)
             {
