@@ -13,11 +13,32 @@ public class GameMenu : MonoBehaviour
     public void OnButtonNewer()
     {
         Moves.moveLeft = true;
+       (Moves.count)++;
+       Moves.first = true;
     }
     //新增 --by lee
     public void OnButtonNewerReturn()
     {
+        //SceneManager.LoadScene(0);
         Moves.moveLeft = false;
+        Moves.count = 0;
+    }
+    public void OnButtonLeft()
+    {
+        if(Moves.count == 1);
+        else{
+            //Moves.count = 3;
+            (Moves.count)--;
+            Moves.moveLeft = true;
+        }
+    }
+    public void OnButtonRight()
+    {
+        if(Moves.count == 8);
+        else{
+            (Moves.count)++;
+            Moves.moveLeft = true;
+        }
     }
 
     public void OnButtonSelect()
