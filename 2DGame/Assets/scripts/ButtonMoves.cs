@@ -14,7 +14,7 @@ public class ButtonMoves : MonoBehaviour
     private void Start()
     {
         moveDistance = 100.0f;
-        speed = 150.0f;
+        speed = 80.0f;
         Vector3 p = gameObject.GetComponent<Transform>().position;
         lower = p.y;
         upper = moveDistance + lower;
@@ -29,6 +29,7 @@ public class ButtonMoves : MonoBehaviour
             {
                 p.y += Time.deltaTime * speed;
                 p.y = min(p.y, upper);
+                Debug.Log(p.y.ToString("px是#0.0"));
                 gameObject.GetComponent<Transform>().position = p;
             }
         }
