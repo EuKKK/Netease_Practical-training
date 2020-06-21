@@ -324,7 +324,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 250
+  m_Text: 300
 --- !u!1 &1624051136635459777
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 500
+  m_Text: 800
 --- !u!1 &2226434874213439556
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 500
 --- !u!1 &2443072708911569495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +1022,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1000
+  m_Text: 800
 --- !u!1 &5247464065941117129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5247464066143145424}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
   m_Name: 
@@ -1329,6 +1329,7 @@ GameObject:
   - component: {fileID: 5247464066168873725}
   - component: {fileID: 5247464066168873715}
   - component: {fileID: 5247464066168873724}
+  - component: {fileID: 156246941105830311}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1393,6 +1394,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &156246941105830311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247464066168873726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatterySelectedData:
+    batteryPrefab: {fileID: 7173556395771248402, guid: 5f3909abec402604685f6e2ec1270b7c,
+      type: 3}
+    cost: 500
+    costWater: 500
+    costElectric: 500
+    type: 0
+    cureDistance: 2
+    cureVal: 8
+    totalHP: 200
+    HP: 200
+    textMoney: {fileID: 0}
+    textWater: {fileID: 0}
+    textElectric: {fileID: 0}
 --- !u!1 &5247464066290522868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1431,7 @@ GameObject:
   - component: {fileID: 5247464066290522859}
   - component: {fileID: 5247464066290522857}
   - component: {fileID: 5247464066290522858}
+  - component: {fileID: 4809872233417087104}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1468,6 +1496,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4809872233417087104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247464066290522868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatterySelectedData:
+    batteryPrefab: {fileID: 5550067328677839914, guid: d0ab20141cc28bc45a4eb3695bd7546d,
+      type: 3}
+    cost: 800
+    costWater: 600
+    costElectric: 800
+    type: 1
+    cureDistance: 3
+    cureVal: 15
+    totalHP: 400
+    HP: 400
+    textMoney: {fileID: 0}
+    textWater: {fileID: 0}
+    textElectric: {fileID: 0}
 --- !u!1 &5247464066297562619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,7 +2275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5247464067253184536}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
   m_Name: 
@@ -2797,7 +2851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5247464067626051252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
   m_Name: 
@@ -3062,6 +3116,7 @@ GameObject:
   - component: {fileID: 5247464067762654319}
   - component: {fileID: 5247464067762654317}
   - component: {fileID: 5247464067762654318}
+  - component: {fileID: 8736315388744937698}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -3126,6 +3181,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8736315388744937698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247464067762654312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf491429eafa043b4f6bdc544f42f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatterySelectedData:
+    batteryPrefab: {fileID: 1602387919625104189, guid: e2a8aa18b2d525d45bdba23fb6e805ee,
+      type: 3}
+    cost: 300
+    costWater: 300
+    costElectric: 500
+    type: 2
+    cureDistance: 1
+    cureVal: 10
+    totalHP: 100
+    HP: 100
+    textMoney: {fileID: 0}
+    textWater: {fileID: 0}
+    textElectric: {fileID: 0}
 --- !u!1 &5247464067773128553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3623,7 +3704,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 150
+  m_Text: 300
 --- !u!1 &6186730538078510164
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,7 +4092,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 500
+  m_Text: 600
 --- !u!1 &7018326479281246280
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,7 @@
 ﻿<Properties StartupConfiguration="{8A3A7B60-0E04-E1C4-071B-6792558F2011}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/BatteryManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Base_command.cs">
     <Files>
-      <File FileName="Assets/scripts/DragEvent.cs" Line="129" Column="2" />
-      <File FileName="Assets/scripts/BatteryManager.cs" Line="203" Column="1" />
-      <File FileName="Assets/scripts/MapsBattery.cs" />
-      <File FileName="Assets/scripts/mapCreater.cs" />
+      <File FileName="Assets/scripts/Base_command.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +9,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
-                <Node name="BatteryManager.cs" selected="True" />
+                <Node name="Base_command.cs" selected="True" />
               </Node>
             </Node>
           </Node>
